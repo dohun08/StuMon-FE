@@ -36,7 +36,7 @@ export default function CurrentSituation() {
       <div>
        <input
          type={'checkbox'}
-         value={isPeriod[0]}
+         checked={isPeriod[0]}
          onChange={()=>periodHandler(0)}
        />
        <label>{width > MOBILE ? "7교시" : "7"}</label>
@@ -44,7 +44,7 @@ export default function CurrentSituation() {
       <div>
        <input
          type={'checkbox'}
-         value={isPeriod[1]}
+         checked={isPeriod[1]}
          onChange={()=>periodHandler(1)}
        />
        <label>{width > MOBILE ? "8~9교시" : "8"}</label>
@@ -52,7 +52,7 @@ export default function CurrentSituation() {
       <div>
        <input
          type={'checkbox'}
-         value={isPeriod[2]}
+         checked={isPeriod[2]}
          onChange={()=>periodHandler(2)}
        />
        <label>{width > MOBILE ? "10~11교시" : "10"}</label>

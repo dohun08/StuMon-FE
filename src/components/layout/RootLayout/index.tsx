@@ -16,11 +16,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <img src={Bell} alt="Alert Icon" />
           </AlertButton>
         </Info>
-        <main>{children}</main>
+        <Main>{children}</Main>
       </Content>
     </Wrapper>
   );
 }
+
+const Main = styled.main`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+`;
 
 const Wrapper = styled.div`
   display: flex;
