@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom"
 import App from './App.tsx'
-import LeaveSeat from "./pages/leaveseat";
+import LeaveSeat from "./pages/leave-seat";
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
