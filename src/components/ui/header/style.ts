@@ -24,4 +24,12 @@ export const Menu = styled.nav`
   flex-direction: column;
   gap: 1.31rem;
 `;
-export const MenuItem = styled.div``;
+export const MenuItem = styled.div<{ active?: boolean }>`
+  color: ${({ active }) => (active ? "#0D6EFD" : "#6C757D")};
+  background-color: ${({ active }) => (active ? "#E9F2FF" : "transparent")};
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  cursor: pointer;
+`;
