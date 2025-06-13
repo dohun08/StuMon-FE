@@ -8,7 +8,9 @@ export const Wrap = styled.div`
     padding: 3% 6%;
     align-items: center;
     flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     justify-content: center;
+    overflow: hidden;
 `
 export const ImgBox = styled.div`
     position: absolute;
