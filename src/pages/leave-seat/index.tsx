@@ -1,4 +1,3 @@
-import RootLayout from "../../components/layout/RootLayout";
 import styled from "@emotion/styled";
 import CurrentSituation from "../../containers/leave-seat/current-situation";
 import CurrentPlaceStatus from "../../containers/leave-seat/current-place-status";
@@ -22,14 +21,12 @@ export default function LeaveSeat() {
     {id:9, place : "베르실1", period : "10~11", student : ["2209 윤도훈", "2210 이정혁"], teacher : "차수민"},
   ]
   return (
-    <RootLayout>
       <LeaveSeatContainer>
        <LeaveSeatWrapper>
         <CurrentSituation leaveData={leaveData} />
         <CurrentPlaceStatus leaveData={leaveData} />
        </LeaveSeatWrapper>
       </LeaveSeatContainer>
-    </RootLayout>
   )
 }
 

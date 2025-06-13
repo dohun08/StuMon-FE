@@ -1,14 +1,11 @@
-import RootLayout from "../../../../components/layout/RootLayout";
 import styled from "@emotion/styled";
 import StudentForm from "../../../../containers/leave-seat-form/student";
 
 export default function LeaveSeatFormStudent() {
  return (
-   <RootLayout>
     <LeaveSeatContainer>
       <StudentForm />
     </LeaveSeatContainer>
-   </RootLayout>
  )
 }
 

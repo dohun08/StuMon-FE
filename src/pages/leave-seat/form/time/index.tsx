@@ -1,15 +1,12 @@
-import RootLayout from "../../../../components/layout/RootLayout";
 import styled from "@emotion/styled";
 import Time from "../../../../containers/leave-seat-form/time";
 
 
 export default function LeaveSeatFormTime() {
  return (
-   <RootLayout>
     <LeaveSeatContainer>
       <Time />
     </LeaveSeatContainer>
-   </RootLayout>
  )
 }
 

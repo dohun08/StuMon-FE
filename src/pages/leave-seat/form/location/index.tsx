@@ -1,14 +1,11 @@
-import RootLayout from "../../../../components/layout/RootLayout";
 import styled from "@emotion/styled";
 import Map from "../../../../containers/leave-seat-form/location/map";
 
 export function LeaveSeatFormLocation() {
  return (
-   <RootLayout>
     <LeaveSeatContainer>
       <Map/>
     </LeaveSeatContainer>
-   </RootLayout>
  )
 }
 
