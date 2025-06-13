@@ -16,7 +16,7 @@ export default function First({LeaveData} :  {LeaveData : LeaveEntry[]}) {
   { id: 10, name: "학부모회실", x: 68, y: 13, width: 3, height: 6 , whether:true},
   { id: 11, name: "보건실", x: 71, y: 13, width: 6, height: 6  , whether:true},
   { id: 12, name: "계단", x: 77, y: 13, width: 2, height: 6 },
-  { id: 13, name: "크리에이티브존(1층)", x: 79, y: 10.5, width: 9, height: 5 , whether:true},
+  { id: 13, name: "크리에이티브존(1층)", x: 79, y: 10.5, width: 9, height: 5},
   { id: 14, name: "기획회의실", x: 81, y: 15.5, width: 5, height: 12 , whether:true},
   { id: 15, name: "교장실", x: 81, y: 27.5, width: 5, height: 8 , whether:true},
   { id: 16, name: "행정지원실", x: 81, y: 35.5, width: 5, height: 8, whether:true},
@@ -49,8 +49,8 @@ export default function First({LeaveData} :  {LeaveData : LeaveEntry[]}) {
  const leave = LeaveData.map(elem => (elem.place));
 
  const navigate = useNavigate()
- const handleClick = ()=>{
-  navigate("/leaveSeat/form/time")
+ const handleClick = (place : string)=>{
+  navigate("/leaveSeat/form/time", {state: {place}})
  }
  return(
    elements.map((el) => {
@@ -61,7 +61,7 @@ export default function First({LeaveData} :  {LeaveData : LeaveEntry[]}) {
         return alert("이미 예약된 자리입니다")
        }
        if(el.whether){
-        handleClick()
+        handleClick(el.name)
        }
       }}
       key={el.id}

@@ -1,7 +1,7 @@
 import * as S from "./style.ts";
 import DateInput from "../../../components/ui/dateInput";
 import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import BackArrow from "../../../assets/icons/backArrow.svg"
 
 export default function Time() {
@@ -17,8 +17,11 @@ export default function Time() {
   const handleBack = () => {
     navigate(-1);
   }
+
+  const location = useLocation();
+  const { place } = location.state;
   const handleTime = () => {
-    navigate("/leaveSeat/form/student")
+    navigate("/leaveSeat/form/student", {state: {time: isTime, place : place}})
   }
   return (
     <S.TimeContainer>

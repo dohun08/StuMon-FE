@@ -1,7 +1,8 @@
 import * as S from "./style.ts";
 import BackArrow from "../../../assets/icons/backArrow.svg"
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useState} from "react";
+import useDay from "../../../store/day.ts";
 
 export default function StudentForm() {
   const navigate = useNavigate();
@@ -25,6 +26,10 @@ export default function StudentForm() {
   const [studentNumbers, setStudentNumbers] = useState([
     1,2
   ]);
+  const location = useLocation();
+  const { place, time } = location.state;
+  const {day} = useDay();
+  console.log(place, day, time);
   return (
     <S.TimeContainer>
       <S.ImgBox onClick={handleBack}>

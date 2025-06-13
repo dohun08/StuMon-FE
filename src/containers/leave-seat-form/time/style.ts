@@ -71,6 +71,6 @@ export const TimeBtn = styled.button<{ $status: boolean }>`
 `;
 export const TimeBox = styled.div`
     display: flex;
-    gap: 1.2rem;
+    gap: 0.675rem;
     align-items: center;
 `

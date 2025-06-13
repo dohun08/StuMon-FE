@@ -34,8 +34,8 @@ export default function Third({LeaveData} :  {LeaveData : LeaveEntry[]}) {
  ];
  const leave = LeaveData.map(elem => (elem.place));
  const navigate = useNavigate()
-const handleClick = ()=>{
- navigate("/leaveSeat/form/time")
+const handleClick = (place : string)=>{
+  navigate("/leaveSeat/form/time", {state: {place}})
 }
  return(
    elements.map((el) => {
@@ -46,7 +46,7 @@ const handleClick = ()=>{
         return alert("이미 예약된 자리입니다")
        }
         if(el.whether){
-          handleClick()
+          handleClick(el.name)
         }
       }}
       key={el.id}
