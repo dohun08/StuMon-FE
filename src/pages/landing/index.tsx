@@ -4,16 +4,21 @@ import Logo from "../../assets/logo.svg"
 import Moniter from "../../assets/moniter.png"
 import {useState} from "react";
 import Modal from "../../components/layout/Modal/index.tsx";
+import Login from "../../containers/landing/login/index.tsx";
 
 export default function Landing(){
-  const [isModalOpen, setModalOpen] = useState(false);
+  const [isModalOpen, setIsMsodalOpen] = useState(false);
   const setModalClose = () => {
-    setModalOpen(false);
+    setIsMsodalOpen(false);
+  }
+  const setModalOpen = () => {
+    setIsMsodalOpen(true);
   }
   return(
       <S.Wrap>
-        {isModalOpen &&<Modal setModalOpen={setModalClose}>
-          <div>dddd</div>
+        {isModalOpen &&
+        <Modal setModalOpen={setModalClose}>
+          <Login />
         </Modal> }
         <S.ImgBox>
           <img src={LandingImg} alt={"main"} />
@@ -27,7 +32,7 @@ export default function Landing(){
               <h1>이석이</h1>
               <h1>필요한</h1>
               <h1>순간일때</h1>
-              <S.btn>사용하기</S.btn>
+              <S.btn onClick={setModalOpen}>사용하기</S.btn>
             </S.TextBox>
             <img src={Moniter} alt={"moniter"} />
           </S.Content>

@@ -14,13 +14,21 @@ export default function Modal({children, setModalOpen} : {children : React.React
 const BlackContainer = styled.div`
   position: fixed;
   top: 0;
+    z-index: 100;
   left: 0;
   width: 100vw;
   height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   background-color: rgba(0, 0, 0, 0.6);
 `;
 const Content = styled.div`
-  width: 60%;
+    background: white;
+  width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 2rem;
-    border-radius: 5rem;
+    border-radius: 2rem;
 `
