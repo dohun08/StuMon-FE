@@ -1,11 +1,13 @@
 import styled from "@emotion/styled";
+import { darken } from "polished";
+
 interface Props {
   $top: number;
   $left: number;
   $width: number;
   $height: number;
   $background?: string;
-  $cursor?: boolean
+  $cursor?: boolean;
 }
 
 export const Element = styled.div<Props>`
@@ -13,23 +15,33 @@ export const Element = styled.div<Props>`
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: ${(props)=>props.$top}%;
-    left: ${(props)=>props.$left}%;
-    width: ${(props)=>props.$width}%;
-    height: ${(props)=>props.$height}%;
-    background: ${(props)=>props.$background};
-    cursor: ${(props)=>props.$cursor ? "pointer" : null};
+    top: ${(props) => props.$top}%;
+    left: ${(props) => props.$left}%;
+    width: ${(props) => props.$width}%;
+    height: ${(props) => props.$height}%;
+    background: ${(props) => props.$background};
+    cursor: ${(props) => (props.$cursor ? "pointer" : "default")};
     font-weight: 550;
     font-size: 10px;
     border: 1px solid black;
     text-align: center;
+    transition: 0.3s;
+
     @media (max-width: 400px) {
         font-size: 4px;
-        height: ${(props)=>props.$height/2}%;
-        top: ${(props)=>props.$top/2}%;
+        height: ${(props) => props.$height / 2}%;
+        top: ${(props) => props.$top / 2}%;
         border: 0.5px solid black;
     }
-`
+
+    &:hover {
+        background: ${(props) =>
+                props.$cursor && props.$background
+                        ? darken(0.1, props.$background)
+                        : undefined};
+        cursor: ${(props) => (props.$cursor ? "pointer" : "default")};
+    }
+`;
 
 export const LocationContainer = styled.div`
     width: 100%;
