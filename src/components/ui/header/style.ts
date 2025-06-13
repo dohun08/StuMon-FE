@@ -16,7 +16,7 @@ export const Divider = styled.div`
   width: 100%;
   border-bottom: 2px solid #DFE6FD;
   flex-shrink: 0;
-  margin: 2.7rem 0;
+  margin: 2.4rem 0;
 `;
 export const Menu = styled.nav`
   display: flex;
