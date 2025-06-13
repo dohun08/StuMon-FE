@@ -1,8 +1,9 @@
 import Header from "../../ui/header";
 import styled from "@emotion/styled";
 import Bell from "../../../assets/icons/bell-bold.svg";
+import {Outlet} from "react-router-dom";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout() {
   return (
     <Wrapper>
       <Header />
@@ -16,7 +17,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <img src={Bell} alt="Alert Icon" />
           </AlertButton>
         </Info>
-        <Main>{children}</Main>
+        <Main>
+          <Outlet />
+        </Main>
       </Content>
     </Wrapper>
   );
