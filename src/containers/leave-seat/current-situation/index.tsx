@@ -1,9 +1,10 @@
 import * as S from "./style"
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Exchange from '../../../assets/icons/exchange.svg';
 import {useNavigate} from "react-router-dom";
+import type {LeaveEntry} from "../../../pages/leave-seat";
 
-export default function CurrentSituation() {
+export default function CurrentSituation({leaveData } : {leaveData : LeaveEntry[]}) {
  const [leaveSeatInputPlace, setLeaveSeatInputPlace] = useState("");
  const [isPeriod, setIsPeriod] = useState([false, false,  false]);
  const handleLeaveSeatInputPlace = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -11,12 +12,23 @@ export default function CurrentSituation() {
  }
  const width = window.screen.width;
  const MOBILE = 500;
+
+ const [period, setPeriod] = useState<string[]>([]);
  const periodHandler = (index: number) => {
   const newIsPeriod = [...isPeriod];
   newIsPeriod[index] = !newIsPeriod[index];
   setIsPeriod(newIsPeriod);
  }
-
+useEffect(()=>{
+ setPeriod(isPeriod.reduce((acc : string[], value, index) => {
+  if (value){
+   if(index === 0) acc.push("7");
+   else if(index === 1) acc.push("8~9");
+   else if(index === 2) acc.push("10~11");
+  }
+  return acc;
+ }, []))
+}, [isPeriod]);
  const navigate = useNavigate();
  const handleMove = () =>{
   navigate('/leaveSeat/form/location')
@@ -65,18 +77,30 @@ export default function CurrentSituation() {
       </div>
      </S.CheckBox>
       <S.LeaveList>
-       <S.Leave>
-        <S.LeaveInfo>
-         <p>마이크로 프로세서실</p>
-         <p>차수민(10~11교시)</p>
-        </S.LeaveInfo>
-        <S.LeaveStudentList>
-         <p>이석현</p>
-         <p>이석현</p>
-         <p>이석현</p>
-         <p>이석현</p>
-        </S.LeaveStudentList>
-       </S.Leave>
+       {leaveData.map((data) => {
+        console.log(period, data)
+        console.log(period.length)
+        if( period.includes(data.period) || period.length === 0){
+         return(
+           <S.Leave key={data.id}>
+            <S.LeaveInfo>
+             <p>{data.place}</p>
+             <p>{data.teacher}({data.period}교시)</p>
+            </S.LeaveInfo>
+            <S.LeaveStudentList>
+             {data.student.map((student, index) => {
+              return(
+                <p key={index}>{student}</p>
+              )
+             })}
+            </S.LeaveStudentList>
+           </S.Leave>
+         )
+        }
+        else{
+         return null;
+        }
+       })}
       </S.LeaveList>
     </S.CurrentPlaceStatusContainer>
   )

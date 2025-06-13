@@ -33,13 +33,13 @@ export const Tbody = styled.tbody`
    text-align: center;
   }
 `;
-export const Th = styled.th`
+export const Th = styled.th<{width?:string}>`
   width : ${(props)=>props.width};
   color : #6C757D;
   font-weight: 600;
 `;
 
-export const Status = styled.div`
+export const Status = styled.div<{isOn?:string}>`
  width : 1rem;
     height: 1rem;
     border-radius: 100%;

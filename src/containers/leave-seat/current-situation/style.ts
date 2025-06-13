@@ -10,13 +10,12 @@ export const CurrentPlaceStatusContainer = styled.section`
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-between;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
   background-color: #FFFFFF;
   padding: 1.5rem 3rem;
   border-radius: 1rem;
+    height: 100%;
     gap: 1rem;
-    flex: 1;
 `;
 export const TitleBox = styled(FLEXBOX)`
   
@@ -44,10 +43,14 @@ export const CheckBox = styled(FLEXBOX)`
     }
 `;
 export const LeaveList = styled(FLEXBOX)`
- height: 100%;
+    height: 52vh;
     width: 100%;
-    padding: 1.5rem 3rem;
     flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow: scroll;
+    padding: 1px;
 `;
 export const Leave = styled.div`
     display: grid;
@@ -56,7 +59,6 @@ export const Leave = styled.div`
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
     background-color: #FFFFFF;
     padding: 1.5rem 3rem;
-    box-sizing: border-box;
     width: 100%;
     border-radius: 0.65rem;
 `
