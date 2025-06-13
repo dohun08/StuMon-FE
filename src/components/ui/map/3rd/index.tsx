@@ -1,4 +1,4 @@
-import * as S from '../../../../container/leave-seat-form/location/map/style';
+import * as S from '../../../../containers/leave-seat-form/location/map/style';
 import {useNavigate} from "react-router-dom";
 
 export default function Third() {

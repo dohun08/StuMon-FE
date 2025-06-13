@@ -1,7 +1,7 @@
 import RootLayout from "../../components/layout/RootLayout";
 import styled from "@emotion/styled";
-import CurrentSituation from "../../container/leave-seat/current-situation";
-import CurrentPlaceStatus from "../../container/leave-seat/current-place-status";
+import CurrentSituation from "../../containers/leave-seat/current-situation";
+import CurrentPlaceStatus from "../../containers/leave-seat/current-place-status";
 
 export default function LeaveSeat() {
   return (

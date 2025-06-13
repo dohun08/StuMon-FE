@@ -1,6 +1,6 @@
 import RootLayout from "../../../../components/layout/RootLayout";
 import styled from "@emotion/styled";
-import Map from "../../../../container/leave-seat-form/location/map";
+import Map from "../../../../containers/leave-seat-form/location/map";
 
 export function LeaveSeatFormLocation() {
  return (
