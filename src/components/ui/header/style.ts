@@ -16,7 +16,7 @@ export const Divider = styled.div`
   width: 100%;
   border-bottom: 2px solid #DFE6FD;
   flex-shrink: 0;
-  margin: 2.7rem 0;
+  margin: 2.4rem 0;
 `;
 export const Menu = styled.nav`
   display: flex;
@@ -37,6 +37,5 @@ export const MenuItem = styled.div<{ active?: boolean }>`
 
   & > img {
     filter: ${({ active }) => active ? "brightness(0) saturate(100%) invert(38%) sepia(87%) saturate(5805%) hue-rotate(206deg) brightness(96%) contrast(101%)" : "none"};
-    transition: filter 0.2s;
   }
 `;

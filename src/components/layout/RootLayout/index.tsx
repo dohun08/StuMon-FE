@@ -22,14 +22,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   );
 }
 
-const Main = styled.main`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: auto;
-`;
-
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -47,7 +39,7 @@ const Info = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 3rem;
+  padding: 1.15rem 3rem;
   background: #FFF;
   box-shadow: 0px 4px 4px -2px rgba(0, 0, 0, 0.1);
 `;
@@ -73,4 +65,11 @@ const AlertButton = styled.button`
   padding: 0.575rem 1.25rem;
   background: #EAECEF;
   cursor: pointer;
+`;
+
+const Main = styled.main`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
