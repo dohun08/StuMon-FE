@@ -4,12 +4,15 @@ import {
   Routes,
   Route
 } from "react-router-dom"
-import App from './App.tsx'
+import RootLayout from './components/layout/RootLayout/index.tsx'
+import MainPage from './pages/mainPage/index.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-    </Routes>
+    <RootLayout>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+      </Routes>
+    </RootLayout>
   </BrowserRouter>
 )
