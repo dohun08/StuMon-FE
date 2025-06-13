@@ -27,7 +27,7 @@ export default function Header() {
       <S.Divider />
       <S.Menu>
         {MENU_ITEMS.map(({ label, path, icon }) => (
-          <S.MenuItem key={path} active={pathname.includes(path)} onClick={() => handleMenuClick(path)}>
+          <S.MenuItem key={path} active={path === '/' ? pathname === '/' : pathname.startsWith(path)} onClick={() => handleMenuClick(path)}>
             <img src={icon} />
             <div>{label}</div>
           </S.MenuItem>

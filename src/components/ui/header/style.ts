@@ -37,6 +37,5 @@ export const MenuItem = styled.div<{ active?: boolean }>`
 
   & > img {
     filter: ${({ active }) => active ? "brightness(0) saturate(100%) invert(38%) sepia(87%) saturate(5805%) hue-rotate(206deg) brightness(96%) contrast(101%)" : "none"};
-    transition: filter 0.2s;
   }
 `;
