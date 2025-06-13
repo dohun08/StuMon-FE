@@ -99,10 +99,16 @@ export const ApplicationBtn = styled.button`
     display: flex;
     gap: 0.5rem;
     font-weight: bold;
-    align-items:center;
+    align-items: center;
+    transition: 0.3s;
+
     & > img {
         width: 1.5rem;
         filter: brightness(0) saturate(100%) invert(100%);
         transition: filter 0.2s;
+    }
+
+    &:hover {
+        background-color: #3879fc;
     }
 `;

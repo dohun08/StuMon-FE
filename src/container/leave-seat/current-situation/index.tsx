@@ -1,6 +1,7 @@
 import * as S from "./style"
 import React, {useState} from "react";
 import Exchange from '../../../assets/icons/exchange.svg';
+import {useNavigate} from "react-router-dom";
 
 export default function CurrentSituation() {
  const [leaveSeatInputPlace, setLeaveSeatInputPlace] = useState("");
@@ -15,11 +16,16 @@ export default function CurrentSituation() {
   newIsPeriod[index] = !newIsPeriod[index];
   setIsPeriod(newIsPeriod);
  }
+
+ const navigate = useNavigate();
+ const handleMove = () =>{
+  navigate('/leaveSeat/form/location')
+ }
   return (
     <S.CurrentPlaceStatusContainer>
       <S.TitleBox>
         <h2>이석현황</h2>
-        <S.ApplicationBtn>
+        <S.ApplicationBtn onClick={handleMove}>
           <img src={Exchange} alt="Exchange Icon" />
          이선 신청
         </S.ApplicationBtn>
