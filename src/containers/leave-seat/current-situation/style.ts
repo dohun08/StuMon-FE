@@ -24,7 +24,7 @@ export const InputBox = styled(FLEXBOX)`
  & > input{
      all: unset;
      border-radius: 0.5rem;
-     padding: 0.5rem 1rem;
+     padding: 1rem;
      width: 100%;
      box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
  }
@@ -40,6 +40,15 @@ export const CheckBox = styled(FLEXBOX)`
         display: flex;
         align-items: center;
         gap: 10px;
+        & > label{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            & > input{
+                cursor: pointer;
+            }
+        }
     }
 `;
 export const LeaveList = styled(FLEXBOX)`

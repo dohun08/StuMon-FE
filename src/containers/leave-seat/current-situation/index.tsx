@@ -39,7 +39,7 @@ useEffect(()=>{
         <h2>이석현황</h2>
         <S.ApplicationBtn onClick={handleMove}>
           <img src={Exchange} alt="Exchange Icon" />
-         이선 신청
+         이석 신청
         </S.ApplicationBtn>
       </S.TitleBox>
       <S.InputBox>
@@ -52,28 +52,32 @@ useEffect(()=>{
       </S.InputBox>
      <S.CheckBox>
       <div>
+       <label>
        <input
          type={'checkbox'}
          checked={isPeriod[0]}
          onChange={()=>periodHandler(0)}
        />
-       <label>{width > MOBILE ? "7교시" : "7"}</label>
+       {width > MOBILE ? "7교시" : "7"}
+       </label>
       </div>
       <div>
+       <label>
        <input
          type={'checkbox'}
          checked={isPeriod[1]}
          onChange={()=>periodHandler(1)}
        />
-       <label>{width > MOBILE ? "8~9교시" : "8"}</label>
+       {width > MOBILE ? "8~9교시" : "8"}</label>
       </div>
       <div>
+       <label>
        <input
          type={'checkbox'}
          checked={isPeriod[2]}
          onChange={()=>periodHandler(2)}
        />
-       <label>{width > MOBILE ? "10~11교시" : "10"}</label>
+       {width > MOBILE ? "10~11교시" : "10"}</label>
       </div>
      </S.CheckBox>
       <S.LeaveList>
@@ -85,7 +89,7 @@ useEffect(()=>{
            <S.Leave key={data.id}>
             <S.LeaveInfo>
              <p>{data.place}</p>
-             <p>{data.teacher}({data.period}교시)</p>
+             <p>({data.period}교시)</p>
             </S.LeaveInfo>
             <S.LeaveStudentList>
              {data.student.map((student, index) => {
