@@ -6,6 +6,7 @@ import {
 } from "react-router-dom"
 import RootLayout from './components/layout/RootLayout/index.tsx'
 import MainPage from './pages/mainPage/index.tsx'
+import AlertPage from './pages/mainPage/alert/index.tsx'
 import LeaveSeat from "./pages/leave-seat";
 import { LeaveSeatFormLocation } from "./pages/leave-seat/form/location";
 import LeaveSeatFormTime from "./pages/leave-seat/form/time";
@@ -35,8 +36,8 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/" element={<RootLayout />}>
-          <Route path="main" element={<MainPage />} />
-          <Route path="/" element={<MainPage />} />
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/main/alert" element={<AlertPage />} />
           <Route path="/Leaveseat" element={<LeaveSeat />} />
           <Route path="/Leaveseat/form/location" element={<LeaveSeatFormLocation />} />
           <Route path="/Leaveseat/form/time" element={<LeaveSeatFormTime />} />
