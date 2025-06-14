@@ -6,7 +6,9 @@ export default function AlertPage() {
     <Wrapper>
       <h1>알림</h1>
       <AlertSection>
-        <h4>모두 삭제</h4>
+        <DeleteButtonContainer>
+          <DeleteButton>모두 삭제</DeleteButton>
+        </DeleteButtonContainer>
         <AlertList />
       </AlertSection>
     </Wrapper>
@@ -19,16 +21,26 @@ const Wrapper = styled.div`
 
 const AlertSection = styled.section`
   height: 100%;
+`;
 
-  h4 {
-    color: #6c757d;
-    display: flex;
-    justify-content: flex-end;
-    transition: all 0.3s ease-in-out;
+const DeleteButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+`;
 
-    &:hover {
-      color: #ff3b30;
-      text-decoration: underline;
-    }
+const DeleteButton = styled.button`
+  background: none;
+  border: none;
+  color: #6c757d;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.3rem 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  
+  &:hover {
+    color: #ff3b30;
+    text-decoration: underline;
   }
 `;
