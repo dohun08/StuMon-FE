@@ -1,8 +1,8 @@
 import * as S from './style';
-import SelfStudyCount from '../../containers/selfStudyCount';
-import LeaveSeat from '../../containers/leave-seat/current-situation-non-search';
-import TodaySupervision from '../../containers/todaySupervision';
-import NextSelfStudy from '../../containers/nextSelfStudy';
+import SelfStudyCount from '../../containers/mainPage/selfStudyCount';
+import LeaveSeat from '../../containers/mainPage/current-situation-non-search';
+import TodaySupervision from '../../containers/mainPage/todaySupervision';
+import NextSelfStudy from '../../containers/mainPage/nextSelfStudy';
 
 export interface LeaveEntry {
   id: number;

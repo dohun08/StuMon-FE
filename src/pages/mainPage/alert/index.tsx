@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import AlertList from '../../../containers/AlertList/index'
+import AlertList from '../../../containers/mainPage/AlertList/index'
 
 export default function AlertPage() {
   return (
