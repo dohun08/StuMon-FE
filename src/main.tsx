@@ -12,6 +12,7 @@ import { LeaveSeatFormLocation } from "./pages/leave-seat/form/location";
 import LeaveSeatFormTime from "./pages/leave-seat/form/time";
 import LeaveSeatFormStudent from "./pages/leave-seat/form/student";
 import Landing from "./pages/landing";
+import ProfilePage from './pages/profile/index.tsx'
 import { Global, css } from '@emotion/react';
 
 createRoot(document.getElementById('root')!).render(
@@ -42,6 +43,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/Leaveseat/form/location" element={<LeaveSeatFormLocation />} />
           <Route path="/Leaveseat/form/time" element={<LeaveSeatFormTime />} />
           <Route path="/Leaveseat/form/student" element={<LeaveSeatFormStudent />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="*" element={<div>404</div>} />
         </Route>
       </Routes>
