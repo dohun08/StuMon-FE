@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import CircleFilledHat from '../../assets/circle-filled-hat.svg';
+import CircleFilledHat from '../../../assets/circle-filled-hat.svg';
 
 interface Alert {
   id: number;

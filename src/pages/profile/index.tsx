@@ -3,7 +3,7 @@ import AfterSchool from '../../containers/afterSchool';
 import { useState } from 'react';
 
 export default function ProfilePage() {
-  const [selectedDay, setSelectedDay] = useState<string>('월');
+  const [selectedDay, setSelectedDay] = useState('월');
   const days = ['월', '화', '수', '목'];
 
   return (

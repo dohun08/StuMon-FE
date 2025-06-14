@@ -1,6 +1,6 @@
 import * as S from './style';
-import Time from '../../assets/time.svg';
-import RightArrow from '../../assets/icons/right-arrow.svg';
+import Time from '../../../assets/time.svg';
+import RightArrow from '../../../assets/icons/right-arrow.svg';
 
 export default function NextSelfStudy() {
   return (

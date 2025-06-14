@@ -1,7 +1,7 @@
 import * as S from './style';
-import StudyLamp from '../../assets/icons/study-lamp.svg';
-import leaveSeatChange from '../../assets/icons/leave-seat-change.svg';
-import Moon from '../../assets/icons/moon.svg';
+import StudyLamp from '../../../assets/icons/study-lamp.svg';
+import leaveSeatChange from '../../../assets/icons/leave-seat-change.svg';
+import Moon from '../../../assets/icons/moon.svg';
 
 
 export default function TodaySupervision() {
