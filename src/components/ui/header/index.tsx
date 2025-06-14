@@ -7,7 +7,7 @@ import Profile from '../../../assets/icons/profile.svg';
 import Supervision from '../../../assets/icons/calender.svg';
 
 const MENU_ITEMS = [
-  { label: '메인', path: '/', icon: House },
+  { label: '메인', path: '/main', icon: House },
   { label: '이석', path: '/leaveSeat', icon: Exchange },
   { label: '프로필', path: '/profile', icon: Profile },
   { label: '자습감독', path: '/supervision', icon: Supervision },

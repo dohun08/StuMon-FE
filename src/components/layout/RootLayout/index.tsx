@@ -1,9 +1,13 @@
 import Header from "../../ui/header";
 import styled from "@emotion/styled";
 import Bell from "../../../assets/icons/bell-bold.svg";
-import {Outlet} from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export default function RootLayout() {
+  const navigate = useNavigate();
+  const handlePageChange = () => {
+    navigate('/main/alert');
+  }
   return (
     <Wrapper>
       <Header />
@@ -13,7 +17,7 @@ export default function RootLayout() {
             <h2>안녕하세요 오주현님</h2>
             <p>오늘도 좋은 하루 되세요!</p>
           </Welcome>
-          <AlertButton>
+          <AlertButton onClick={handlePageChange}>
             <img src={Bell} alt="Alert Icon" />
           </AlertButton>
         </Info>
