@@ -32,6 +32,10 @@ export const Tbody = styled.tbody`
   * > {
    text-align: center;
   }
+    & > th{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
 `;
 export const Th = styled.th<{width?:string}>`
   width : ${(props)=>props.width};

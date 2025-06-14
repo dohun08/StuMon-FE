@@ -82,8 +82,6 @@ useEffect(()=>{
      </S.CheckBox>
       <S.LeaveList>
        {leaveData.map((data) => {
-        console.log(period, data)
-        console.log(period.length)
         if( period.includes(data.period) || period.length === 0){
          return(
            <S.Leave key={data.id}>
