@@ -1,3 +1,4 @@
+import React from "react";
 import * as S from "./style";
 
 interface SupervisionItemProps {
@@ -37,8 +38,8 @@ export default function SupervisionItem({ weekData }: SupervisionItemProps) {
         <S.Divider />
       </S.ItemSet>
       {weekData.items.map((item, index) => (
-        <>
-          <S.DataSet key={index} isNull={item.date === ""}>
+        <React.Fragment key={item.date}>
+          <S.DataSet isNull={item.date === ""}>
             <S.DataSetHeader>
               <S.DataSetHeaderContent>{item.day}</S.DataSetHeaderContent>
               <S.DataSetHeaderBottom>
@@ -62,7 +63,7 @@ export default function SupervisionItem({ weekData }: SupervisionItemProps) {
             </S.DataSetContent>
           </S.DataSet>
           {index < weekData.items.length - 1 && <S.Divider />}
-        </>
+        </React.Fragment>
       ))
       }
     </S.Wrapper >
