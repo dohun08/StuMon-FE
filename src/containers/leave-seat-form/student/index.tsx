@@ -103,7 +103,7 @@ export default function StudentForm() {
           </S.StudentBox>
         </S.DateBox>
       </S.Content>
-      <S.Btn >
+      <S.Btn onClick={() => navigate("/leaveSeat")}>
         완료
       </S.Btn>
     </S.TimeContainer>
