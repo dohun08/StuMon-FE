@@ -43,7 +43,7 @@ export const Th = styled.th<{width?:string}>`
   font-weight: 600;
 `;
 
-export const Status = styled.div<{isOn?:string}>`
+export const Status = styled.div<{isOn?:boolean}>`
  width : 1rem;
     height: 1rem;
     border-radius: 100%;
