@@ -31,8 +31,9 @@ jobs:
           git checkout main
           git merge upstream/main --allow-unrelated-histories -m "🔄 Sync fork with upstream"
 
-      - name: Push changes to fork
-        run: |
-          git push origin main
+      - name: Push changes back to fork
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git push origin main
