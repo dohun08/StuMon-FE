@@ -1,9 +1,15 @@
 import * as S from "./style.ts";
 import BackArrow from "../../../assets/icons/backArrow.svg"
 import {useLocation, useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import useDay from "../../../store/day.ts";
+import {searchStudent} from "../../../service/auth.ts";
+import useDebounce from "../../../hooks/useDebounce.ts";
 
+interface Student {
+  name: string;
+  id: number;
+}
 export default function StudentForm() {
   const navigate = useNavigate();
   const handleBack = () => {
@@ -11,25 +17,18 @@ export default function StudentForm() {
   }
   const [cause, setCause] = useState("");
 
-  const [student, setStudent] = useState([
-    {name : "2209 윤도훈", id : 1},
-    {name : "2209 윤도훈", id : 2},
-    {name : "2209 윤도훈", id : 3},
-    {name : "2209 윤도훈", id : 4},
-    {name : "2209 윤도훈", id : 5},
-  ]);
+  const [student, setStudent] = useState<Student[]>([]);
   const [search, setSearch] = useState("");
-  const [selectStudent, setSelectStudent] = useState([
-    {name : "2209 윤도훈", id : 1},
-    {name : "2209 윤도훈", id : 2},
-  ]);
-  const [studentNumbers, setStudentNumbers] = useState([
-    1,2
-  ]);
+  const [selectStudent, setSelectStudent] = useState<Student[]>([]);
+  const [studentNumbers, setStudentNumbers] = useState<number[]>([]);
   const location = useLocation();
   const { place, time } = location.state;
   const {day} = useDay();
-  console.log(place, day, time, setStudent);
+  const debouncedSearch = useDebounce(() => searchStudent(search, setStudent), 100);
+  console.log(day, place, time)
+  useEffect(() => {
+    if (search) debouncedSearch();
+  }, [search]);
   return (
     <S.TimeContainer>
       <S.ImgBox onClick={handleBack}>
