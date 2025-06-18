@@ -1,1 +1,0 @@
-import * as API from "../service/leave-seat";
