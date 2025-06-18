@@ -83,21 +83,40 @@ useEffect(()=>{
       <S.LeaveList>
        {leaveData.map((data) => {
         if( period.includes(data.period) || period.length === 0){
-         return(
-           <S.Leave key={data.id}>
-            <S.LeaveInfo>
-             <p>{data.place}</p>
-             <p>({data.period}교시)</p>
-            </S.LeaveInfo>
-            <S.LeaveStudentList>
-             {data.student.map((student, index) => {
-              return(
-                <p key={index}>{student}</p>
-              )
-             })}
-            </S.LeaveStudentList>
-           </S.Leave>
-         )
+         if(leaveSeatInputPlace === ""){
+          return(
+            <S.Leave key={data.id}>
+             <S.LeaveInfo>
+              <p>{data.place}</p>
+              <p>{data.period}교시</p>
+             </S.LeaveInfo>
+             <S.LeaveStudentList>
+              {data.student.map((student, index) => {
+               return(
+                 <p key={index}>{student}</p>
+               )
+              })}
+             </S.LeaveStudentList>
+            </S.Leave>
+          )
+         }
+         else if(data.place.includes(leaveSeatInputPlace)){
+          return(
+            <S.Leave key={data.id}>
+             <S.LeaveInfo>
+              <p>{data.place}</p>
+              <p>{data.period}교시</p>
+             </S.LeaveInfo>
+             <S.LeaveStudentList>
+              {data.student.map((student, index) => {
+               return(
+                 <p key={index}>{student}</p>
+               )
+              })}
+             </S.LeaveStudentList>
+            </S.Leave>
+          )
+         }
         }
         else{
          return null;
