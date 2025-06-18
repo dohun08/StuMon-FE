@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import type { LeaveEntry } from "../../../pages/leave-seat";
 
 export default function CurrentSituationNonSearch({ leaveData }: { leaveData: LeaveEntry[] }) {
-  const [isPeriod, setIsPeriod] = useState([false, false, false]);
+  const [isPeriod, _setIsPeriod] = useState([false, false, false]);
   const [period, setPeriod] = useState<string[]>([]);
   useEffect(() => {
     setPeriod(isPeriod.reduce((acc: string[], value, index) => {
