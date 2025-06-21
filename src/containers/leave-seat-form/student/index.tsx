@@ -89,7 +89,7 @@ export default function StudentForm() {
               onClick={() =>{
                 setStudentNumbers(
                   studentNumbers.filter(
-                    (currentItem) => currentItem !== item.student_number
+                    (currentItem) => currentItem !== item.id
                   )
                 )
                 setSelectStudent(
