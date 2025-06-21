@@ -47,7 +47,7 @@ useEffect(()=>{
          type="text"
          value={leaveSeatInputPlace}
          onChange={(e)=>handleLeaveSeatInputPlace(e)}
-         placeholder={"장소나 학생을 입력해주세요"}
+         placeholder={"장소를 입력해주세요"}
        />
       </S.InputBox>
      <S.CheckBox>
@@ -83,21 +83,40 @@ useEffect(()=>{
       <S.LeaveList>
        {leaveData.map((data) => {
         if( period.includes(data.period) || period.length === 0){
-         return(
-           <S.Leave key={data.id}>
-            <S.LeaveInfo>
-             <p>{data.place}</p>
-             <p>({data.period}교시)</p>
-            </S.LeaveInfo>
-            <S.LeaveStudentList>
-             {data.student.map((student, index) => {
-              return(
-                <p key={index}>{student}</p>
-              )
-             })}
-            </S.LeaveStudentList>
-           </S.Leave>
-         )
+         if(leaveSeatInputPlace === ""){
+          return(
+            <S.Leave key={data.id}>
+             <S.LeaveInfo>
+              <p>{data.place}</p>
+              <p>{data.period}교시</p>
+             </S.LeaveInfo>
+             <S.LeaveStudentList>
+              {data.students.map((student, index) => {
+               return(
+                 <p key={index}>{student}</p>
+               )
+              })}
+             </S.LeaveStudentList>
+            </S.Leave>
+          )
+         }
+         else if(data.place.includes(leaveSeatInputPlace)){
+          return(
+            <S.Leave key={data.id}>
+             <S.LeaveInfo>
+              <p>{data.place}</p>
+              <p>{data.period}교시</p>
+             </S.LeaveInfo>
+             <S.LeaveStudentList>
+              {data.students.map((student, index) => {
+               return(
+                 <p key={index}>{student}</p>
+               )
+              })}
+             </S.LeaveStudentList>
+            </S.Leave>
+          )
+         }
         }
         else{
          return null;

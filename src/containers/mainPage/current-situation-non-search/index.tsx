@@ -40,7 +40,7 @@ export default function CurrentSituationNonSearch({ leaveData }: { leaveData: Le
                   <p>({data.period}교시)</p>
                 </S.LeaveInfo>
                 <S.LeaveStudentList>
-                  {data.student.map((student, index) => {
+                  {data.students.map((student, index) => {
                     return (
                       <p key={index}>{student}</p>
                     )

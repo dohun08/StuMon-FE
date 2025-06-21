@@ -1,8 +1,12 @@
 import * as S from "./style.ts";
 import BackArrow from "../../../assets/icons/backArrow.svg"
 import {useLocation, useNavigate} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import useDay from "../../../store/day.ts";
+import {searchStudent} from "../../../service/auth.ts";
+import useDebounce from "../../../hooks/useDebounce.ts";
+import {useCreateLeaveSeat} from "../../../hooks/useLeaveSeat.ts";
+import type {Student} from "../../../pages/leave-seat/form/student";
 
 export default function StudentForm() {
   const navigate = useNavigate();
@@ -11,25 +15,24 @@ export default function StudentForm() {
   }
   const [cause, setCause] = useState("");
 
-  const [student, setStudent] = useState([
-    {name : "2209 윤도훈", id : 1},
-    {name : "2209 윤도훈", id : 2},
-    {name : "2209 윤도훈", id : 3},
-    {name : "2209 윤도훈", id : 4},
-    {name : "2209 윤도훈", id : 5},
-  ]);
+  const [student, setStudent] = useState<Student[]>([]);
   const [search, setSearch] = useState("");
-  const [selectStudent, setSelectStudent] = useState([
-    {name : "2209 윤도훈", id : 1},
-    {name : "2209 윤도훈", id : 2},
-  ]);
-  const [studentNumbers, setStudentNumbers] = useState([
-    1,2
-  ]);
+  const [selectStudent, setSelectStudent] = useState<Student[]>([]);
+  const [studentNumbers, setStudentNumbers] = useState<number[]>([]);
   const location = useLocation();
   const { place, time } = location.state;
   const {day} = useDay();
-  console.log(place, day, time);
+  const debouncedSearch = useDebounce(() => searchStudent(search, setStudent), 100);
+
+  useEffect(() => {
+    if (search) debouncedSearch();
+  }, [search]);
+
+  const {mutate} = useCreateLeaveSeat();
+
+  const handleSelect = () => {
+    mutate({date : day, place_name: place, period :time, cause, students: selectStudent});
+  };
   return (
     <S.TimeContainer>
       <S.ImgBox onClick={handleBack}>
@@ -52,25 +55,25 @@ export default function StudentForm() {
               type={"text"}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder={"학번이나 이름을 입력해주세요"}
+              placeholder={"이름을 입력해주세요"}
             />
             <S.StudentList>
               {search && student &&
                 student.map((currentItem) => {
-                  if (studentNumbers.includes(currentItem.id)) {
+                  if (studentNumbers.includes(currentItem.student_number)) {
                     return null;
                   }
                   else {
                     return (
                       <S.StudentItem
                         onClick={() => {
-                          setStudentNumbers((prev) => [...prev, currentItem.id]);
+                          setStudentNumbers((prev) => [...prev, currentItem.student_number]);
                           setSelectStudent((prev) => [...prev, currentItem]);
                           setSearch("");
                         }}
-                        key={currentItem.id}
+                        key={currentItem.student_number}
                       >
-                        {currentItem.name}
+                        {currentItem.student_number} {currentItem.name}
                       </S.StudentItem>
                     );
                   }
@@ -96,14 +99,16 @@ export default function StudentForm() {
                 )
               }}
             >
-              <span>{item.name}</span>
+              <span>{item.student_number} {item.name}</span>
             </S.Student>
             )
           })}
           </S.StudentBox>
         </S.DateBox>
       </S.Content>
-      <S.Btn onClick={() => navigate("/leaveSeat")}>
+      <S.Btn onClick={()=>{
+        handleSelect()
+      }}>
         완료
       </S.Btn>
     </S.TimeContainer>
