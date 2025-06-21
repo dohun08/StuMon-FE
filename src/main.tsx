@@ -15,9 +15,12 @@ import Landing from "./pages/landing";
 import ProfilePage from './pages/profile/index.tsx'
 import Supervision from './pages/supervision/index.tsx'
 import { Global, css } from '@emotion/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(
-  <>
+  <QueryClientProvider client={queryClient}>
     <Global
       styles={css`
         html, body {
@@ -50,6 +53,6 @@ createRoot(document.getElementById('root')!).render(
         </Route>
       </Routes>
     </BrowserRouter>
-  </>
+  </QueryClientProvider>
 
 )

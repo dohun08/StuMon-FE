@@ -5,11 +5,9 @@ import {useEffect, useState} from "react";
 import useDay from "../../../store/day.ts";
 import {searchStudent} from "../../../service/auth.ts";
 import useDebounce from "../../../hooks/useDebounce.ts";
+import {useCreateLeaveSeat} from "../../../hooks/useLeaveSeat.ts";
+import type {Student} from "../../../pages/leave-seat/form/student";
 
-interface Student {
-  name: string;
-  id: number;
-}
 export default function StudentForm() {
   const navigate = useNavigate();
   const handleBack = () => {
@@ -25,10 +23,16 @@ export default function StudentForm() {
   const { place, time } = location.state;
   const {day} = useDay();
   const debouncedSearch = useDebounce(() => searchStudent(search, setStudent), 100);
-  console.log(day, place, time)
+
   useEffect(() => {
     if (search) debouncedSearch();
   }, [search]);
+
+  const {mutate} = useCreateLeaveSeat();
+
+  const handleSelect = () => {
+    mutate({date : day, place_name: place, period :time, cause, students: selectStudent});
+  };
   return (
     <S.TimeContainer>
       <S.ImgBox onClick={handleBack}>
@@ -51,25 +55,25 @@ export default function StudentForm() {
               type={"text"}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder={"학번이나 이름을 입력해주세요"}
+              placeholder={"이름을 입력해주세요"}
             />
             <S.StudentList>
               {search && student &&
                 student.map((currentItem) => {
-                  if (studentNumbers.includes(currentItem.id)) {
+                  if (studentNumbers.includes(currentItem.student_number)) {
                     return null;
                   }
                   else {
                     return (
                       <S.StudentItem
                         onClick={() => {
-                          setStudentNumbers((prev) => [...prev, currentItem.id]);
+                          setStudentNumbers((prev) => [...prev, currentItem.student_number]);
                           setSelectStudent((prev) => [...prev, currentItem]);
                           setSearch("");
                         }}
-                        key={currentItem.id}
+                        key={currentItem.student_number}
                       >
-                        {currentItem.name}
+                        {currentItem.student_number} {currentItem.name}
                       </S.StudentItem>
                     );
                   }
@@ -85,7 +89,7 @@ export default function StudentForm() {
               onClick={() =>{
                 setStudentNumbers(
                   studentNumbers.filter(
-                    (currentItem) => currentItem !== item.id
+                    (currentItem) => currentItem !== item.student_number
                   )
                 )
                 setSelectStudent(
@@ -95,14 +99,16 @@ export default function StudentForm() {
                 )
               }}
             >
-              <span>{item.name}</span>
+              <span>{item.student_number} {item.name}</span>
             </S.Student>
             )
           })}
           </S.StudentBox>
         </S.DateBox>
       </S.Content>
-      <S.Btn onClick={() => navigate("/leaveSeat")}>
+      <S.Btn onClick={()=>{
+        handleSelect()
+      }}>
         완료
       </S.Btn>
     </S.TimeContainer>

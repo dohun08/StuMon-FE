@@ -47,7 +47,7 @@ useEffect(()=>{
          type="text"
          value={leaveSeatInputPlace}
          onChange={(e)=>handleLeaveSeatInputPlace(e)}
-         placeholder={"장소나 학생을 입력해주세요"}
+         placeholder={"장소를 입력해주세요"}
        />
       </S.InputBox>
      <S.CheckBox>
@@ -91,7 +91,7 @@ useEffect(()=>{
               <p>{data.period}교시</p>
              </S.LeaveInfo>
              <S.LeaveStudentList>
-              {data.student.map((student, index) => {
+              {data.students.map((student, index) => {
                return(
                  <p key={index}>{student}</p>
                )
@@ -108,7 +108,7 @@ useEffect(()=>{
               <p>{data.period}교시</p>
              </S.LeaveInfo>
              <S.LeaveStudentList>
-              {data.student.map((student, index) => {
+              {data.students.map((student, index) => {
                return(
                  <p key={index}>{student}</p>
                )

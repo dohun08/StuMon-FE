@@ -1,5 +1,10 @@
 import styled from "@emotion/styled";
 import StudentForm from "../../../../containers/leave-seat-form/student";
+export interface Student {
+  name: string;
+  student_number: number;
+  id: number
+}
 
 export default function LeaveSeatFormStudent() {
  return (

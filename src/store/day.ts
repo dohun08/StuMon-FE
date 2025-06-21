@@ -11,7 +11,7 @@ interface DayState {
  end: string;
  select: boolean;          // boolean으로 선언되어야 할 것 같아요 (원래 string인데 setSelect 타입이 string이면 string으로 하셔야 합니다)
  recordDay: string;
- period: string;
+ period: (string);
 
  setDay: (newDay: string) => void;
  setStart: (newStart: string) => void;
@@ -23,9 +23,10 @@ interface DayState {
 
 const changeClass = () =>{
  const time = hour * 60 + minute;
- if(time >= 0 && time <= 16 * 60 + 9) return "7교시";
- else if(time >= 16 * 60 + 10 && time <= 18*60 + 9) return "8~9교시";
- else if(time >= 18*60 + 10 && time <= 24*60) return "10~11교시";
+ if(time >= 0 && time <= 16 * 60 + 9) return "SEVEN";
+ else if(time >= 16 * 60 + 10 && time <= 18*60 + 9) return "EIGHT_NIGHT";
+ else if(time >= 18*60 + 10 && time <= 24*60) return "TEN_ELEVEN";
+ else return "";
 }
 
 const useDay = create<DayState>((set) => ({
@@ -35,7 +36,7 @@ const useDay = create<DayState>((set) => ({
  end:'',
  select:false,
  recordDay : '',
- period : "7교시",
+ period : changeClass(),
  setDay:(newDay)=>set({day : newDay}),
  setStart:(newStart)=>set({start : newStart}),
  setEnd:(newEnd )=>set({end : newEnd}),

@@ -2,7 +2,7 @@ import axios, { type AxiosInstance } from 'axios';
 
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: 'https://stumon-be-fastapi.onrender.com/',
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json'
   },

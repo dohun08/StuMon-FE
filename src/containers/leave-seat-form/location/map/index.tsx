@@ -25,7 +25,7 @@ function SquareBtn({name, On, status} : {name : string,On: Function; status: boo
     </S.SquareContainer>
   )
 }
-export default function Map() {
+export default function Map({LeaveData, unLeaveData} :  {LeaveData: LeaveEntry[], unLeaveData: LeaveEntry[]}) {
   const navigate = useNavigate();
   const [isFloor, setFloor] = useState([
     true, false, false, false
@@ -36,12 +36,12 @@ export default function Map() {
     setFloor(newFloor);
   }
 
-  const LeaveData: LeaveEntry[] = [
-    {place: "베르실1", id: 1, period: "7", student: ["2209 윤도훈", "2210 이정혁"], teacher: "차수민"},
-    {place: "베르실2", id: 2, period: "8~9", student: ["2209 윤도훈", "2210 이정혁"], teacher: "차수민"},
-    {place: "베르실3", id: 3, period: "10~11", student: ["2209 윤도훈", "2210 이정혁"], teacher: "차수민"},
-    {place: "베르실4", id: 4, period: "10~11", student: ["2209 윤도훈", "2210 이정혁"], teacher: "차수민"},
-  ]
+  // const LeaveData: LeaveEntry[] = [
+  //   {place: "베르실1", id: 1, period: "7", students: ["2209 윤도훈", "2210 이정혁"]},
+  //   {place: "베르실2", id: 2, period: "8~9", students: ["2209 윤도훈", "2210 이정혁"]},
+  //   {place: "베르실3", id: 3, period: "10~11", students: ["2209 윤도훈", "2210 이정혁"]},
+  //   {place: "베르실4", id: 4, period: "10~11", students: ["2209 윤도훈", "2210 이정혁"]},
+  // ]
   return (
     <S.LocationContainer>
       <S.Info>
@@ -79,13 +79,13 @@ export default function Map() {
               <S.Wrap>
                   <S.Box>
                     {isFloor[0] ? (
-                        <First  LeaveData={LeaveData}/>
+                        <First  LeaveData={LeaveData} unLeaveData={unLeaveData}/>
                       ) : isFloor[1] ? (
-                        <Second  LeaveData={LeaveData}/>
+                        <Second  LeaveData={LeaveData} unLeaveData={unLeaveData}/>
                       ) : isFloor[2] ? (
-                        <Third LeaveData={LeaveData}/>
+                        <Third LeaveData={LeaveData} unLeaveData={unLeaveData}/>
                       ) : isFloor[3] ? (
-                        <Fourth  LeaveData={LeaveData} />
+                        <Fourth  LeaveData={LeaveData} unLeaveData={unLeaveData} />
                       ) : null}
                   </S.Box>
               </S.Wrap>
