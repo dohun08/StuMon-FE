@@ -29,9 +29,9 @@ export default function Landing(){
           </S.LogoBox>
           <S.Content>
             <S.TextBox>
-              {/*<h1>이석이</h1>*/}
-              {/*<h1>필요한</h1>*/}
-              {/*<h1>순간일때</h1>*/}
+              <h1>이석이</h1>
+              <h1>필요한</h1>
+              <h1>순간일때</h1>
               <S.btn onClick={setModalOpen}>사용하기</S.btn>
             </S.TextBox>
             <img src={Moniter} alt={"moniter"} />
