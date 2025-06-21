@@ -22,12 +22,18 @@ export default function Time() {
   const location = useLocation();
   const { place, unPlace } = location.state;
   const handleTime = () => {
-    const time = isTime.map((item)=>{
-      if (item) return "SEVEN";
-      else if (item) return "EIGHT_NIGHT";
-      else return "TEN_ELEVEN";
-    })
-    navigate("/leaveSeat/form/student", {state: {time: time[0], place : place}})
+    let period = "";
+    const time = isTime.findIndex((value) => value);
+    console.log(time)
+    if (time === -1) {
+      alert("시간을 선택해주세요")
+      return
+    }
+    else if(time === 0) period = "SEVEN";
+    else if(time === 1) period = "EIGHT_NIGHT";
+    else if(time === 2) period = "TEN_ELEVEN";
+
+    navigate("/leaveSeat/form/student", {state: {time: period, place : place}})
   }
   const [unPlaceData, setUnPlaceData] = useState<boolean[]>([false, false, false]);
 

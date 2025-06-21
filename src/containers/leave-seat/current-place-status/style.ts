@@ -43,11 +43,11 @@ export const Th = styled.th<{width?:string}>`
   font-weight: 600;
 `;
 
-export const Status = styled.div<{isOn?:string}>`
+export const Status = styled.div<{isOn?:string | boolean}>`
  width : 1rem;
     height: 1rem;
     border-radius: 100%;
     display: inline-block;
-    background-color: ${props => props.isOn ? "#71DAAA" : "#E74B3C"};
+    background-color: ${props => props.isOn ? "#E74B3C" : "#71DAAA"};
     color: white;
 `

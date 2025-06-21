@@ -5,6 +5,7 @@ import {useGetLeaveSeat} from "../../hooks/useLeaveSeat.ts";
 import useDay from "../../store/day.ts";
 import {useEffect, useState} from "react";
 import type {Student} from "./form/student";
+import Loading from "../../components/ui/loading";
 export interface LeaveEntry {
   place: string;
   period: string
@@ -30,12 +31,11 @@ export default function LeaveSeat() {
   //   {id:8, place : "마이크로프로세서실", period : "10~11", student : ["2209 윤도훈", "2210 이정혁"]},
   //   {id:9, place : "베르실1", period : "10~11", student : ["2209 윤도훈", "2210 이정혁"]},
   // ]
-  const {today, period} = useDay();
+  const {today} = useDay();
 
   const {data, isLoading} = useGetLeaveSeat(today.slice(0, 10));
   const [leaveSeat, setLeaveSeat] = useState<LeaveEntry[]>([]);
-  const [currentData, setCurrentData] = useState<LeaveEntry[]>([]);
-  console.log(today, data)
+
   useEffect(() => {
     if (data) {
       const newData = data.map((item : LeaveEntry, idx: number) => {
@@ -47,18 +47,15 @@ export default function LeaveSeat() {
           id: idx
         }
       })
-      const newCurrentData = newData.filter((item : LeaveEntry) => {
-        return item.period === period;
-      })
-      setCurrentData(newCurrentData);
       setLeaveSeat(newData);
     }
   }, [isLoading]);
   return (
       <LeaveSeatContainer>
+        {isLoading && <Loading />}
        <LeaveSeatWrapper>
         <CurrentSituation leaveData={leaveSeat} />
-        <CurrentPlaceStatus leaveData={currentData} />
+        <CurrentPlaceStatus leaveData={leaveSeat} />
        </LeaveSeatWrapper>
       </LeaveSeatContainer>
   )

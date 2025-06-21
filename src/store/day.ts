@@ -23,9 +23,9 @@ interface DayState {
 
 const changeClass = () =>{
  const time = hour * 60 + minute;
- if(time >= 0 && time <= 16 * 60 + 9) return "SEVEN";
- else if(time >= 16 * 60 + 10 && time <= 18*60 + 9) return "EIGHT_NIGHT";
- else if(time >= 18*60 + 10 && time <= 24*60) return "TEN_ELEVEN";
+ if(time >= 0 && time <= 16 * 60 + 9) return "7";
+ else if(time >= 16 * 60 + 10 && time <= 18*60 + 9) return "8~9";
+ else if(time >= 18*60 + 10 && time <= 24*60) return "10~11";
  else return "";
 }
 
