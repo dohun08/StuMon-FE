@@ -47,7 +47,7 @@ export const DateBox = styled.div`
 export const DateTitle = styled.p`
  font-size: 1.2rem;
 `
-export const TimeBtn = styled.button<{ $status: boolean }>`
+export const TimeBtn = styled.button<{ $status: boolean, $unPlace : boolean }>`
     max-width: 150px;
     display: flex;
     align-items: center;
@@ -57,7 +57,7 @@ export const TimeBtn = styled.button<{ $status: boolean }>`
     padding: 6px 25px;
     border-radius: 40px;
     border: 2px solid #2E6FF2;
-    cursor: pointer;
+    cursor: ${props => props.$unPlace ? "not-allowed" : "pointer"};
     transition: 0.1s;
     font-weight: 600;
     &:hover {

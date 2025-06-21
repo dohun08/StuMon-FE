@@ -2,7 +2,7 @@ import * as S from '../../../../containers/leave-seat-form/location/map/style';
 import {useNavigate} from "react-router-dom";
 import type {LeaveEntry} from "../../../../pages/leave-seat";
 
-export default function Third({LeaveData} :  {LeaveData : LeaveEntry[]}) {
+export default function Third({LeaveData, unLeaveData} :  {LeaveData : LeaveEntry[], unLeaveData: LeaveEntry[]}) {
  const elements = [
   { id: 1, name: "", x: 4, y: 10.5, width: 8, height: 12.5},
   { id: 2, name: "", x: 12, y: 19, width: 16, height: 4},
@@ -35,7 +35,7 @@ export default function Third({LeaveData} :  {LeaveData : LeaveEntry[]}) {
  const leave = LeaveData.map(elem => (elem.place));
  const navigate = useNavigate()
 const handleClick = (place : string)=>{
-  navigate("/leaveSeat/form/time", {state: {place}})
+  navigate("/leaveSeat/form/time", {state: {place, unPlace : unLeaveData}})
 }
  return(
    elements.map((el) => {
