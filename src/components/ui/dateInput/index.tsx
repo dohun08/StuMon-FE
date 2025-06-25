@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import * as S from './style.ts';
 import useDay from "../../../store/day.ts";
+import React from "react";
 import patchDay from "../../../util/patchDay.js";
 
 export default function DateInput() {
@@ -11,12 +12,12 @@ export default function DateInput() {
  const [isFocused, setIsFocused] = useState(false);
 
  useEffect(() => {
-   setDay(patchDay(today));
+  setDay(patchDay(today));
  }, []);
 
- const handleDateChange = (e) => {
+ const handleDateChange = (e : React.ChangeEvent<HTMLInputElement> ) => {
   const inputDate = new Date(e.target.value);
-  if (!isNaN(inputDate)) {
+  if (!isNaN(inputDate.getTime())) {
    const formattedDate = `${inputDate.getFullYear()}년 ${
      String(inputDate.getMonth() + 1).padStart(2, '0')
    }월 ${
@@ -39,7 +40,13 @@ export default function DateInput() {
        placeholder=""
        onFocus={() => setIsFocused(true)}
        onBlur={() => setIsFocused(false)}
-       onClick={(e) => e.target.nextSibling.showPicker()}
+       onClick={(e) => {
+        const target = e.target as HTMLElement;
+        const next = target.nextSibling as HTMLElement | null;
+        if (next && 'showPicker' in next && typeof (next as any).showPicker === 'function') {
+         (next as any).showPicker();
+        }
+       }}
      />
      <S.HiddenDateInput
        type="date"
