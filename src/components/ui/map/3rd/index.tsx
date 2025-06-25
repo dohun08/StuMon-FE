@@ -7,7 +7,7 @@ export default function Third({LeaveData, unLeaveData} :  {LeaveData : LeaveEntr
   { id: 1, name: "", x: 4, y: 10.5, width: 8, height: 12.5},
   { id: 2, name: "", x: 12, y: 19, width: 16, height: 4},
   { id: 3, name: "커뮤니티홀", x: 12, y: 10.5, width: 11, height:8.5, whether : true},
-  { id: 4, name: "창의공작실", x: 23, y: 13, width: 7, height: 6, whether : true},
+  { id: 4, name: "3D프린터용제품제작실", x: 23, y: 13, width: 7, height: 6, whether : true},
   { id: 5, name: "모둠학습실", x: 30, y: 13, width: 5, height: 6, whether : true},
   { id: 6, name: "영어교과실", x: 35, y: 13, width: 5.5, height: 6, whether : true},
   { id: 7, name: "기숙사운영부", x: 40.5, y: 13, width: 3.5, height: 6},
@@ -27,7 +27,7 @@ export default function Third({LeaveData, unLeaveData} :  {LeaveData : LeaveEntr
   { id: 21, name: "베르실3", x: 8.5, y: 18, width: 3.5, height: 5, whether : true},
   { id: 22, name: "베르실5", x: 12, y: 19, width: 3.5, height: 4, whether : true},
   { id: 23, name: "베르실6", x: 15.5, y: 19, width: 3.5, height: 4, whether : true},
-  { id: 24, name: "산화협력부", x: 8.5, y: 13, width: 3.5, height: 5, whether : true},
+  { id: 24, name: "산학협력부", x: 8.5, y: 13, width: 3.5, height: 5, whether : true},
   { id: 25, name: "생활지원실", x: 19, y: 19, width: 2.5, height: 4},
   { id: 26, name: "기숙사(3층)", x: 12, y: 23, width: 16, height: 47.5},
 
