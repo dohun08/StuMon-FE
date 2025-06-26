@@ -1,12 +1,10 @@
 import styled from "@emotion/styled";
 import Google from "../../../assets/google.svg";
 import Logo from "../../../assets/logo.svg";
-import {useNavigate} from "react-router-dom";
 
 export default function Login(){
-  const navigate = useNavigate();
   const handleLogin = () => {
-    navigate("/main");
+    window.location.href = "http://localhost:8000/auth/login"
   }
   return(
     <Main>
