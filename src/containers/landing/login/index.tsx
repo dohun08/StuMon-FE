@@ -4,11 +4,9 @@ import Logo from "../../../assets/logo.svg";
 
 export default function Login(){
   const handleLogin = () => {
-    if(import.meta.env.VITE_API_URL === undefined) {
-      window.location.href = "http://localhost:8080/auth/login"
-      return;
-    }
-    window.location.href = import.meta.env.VITE_API_URL+"/auth/login"
+    window.location.href = "http://localhost:8000/auth/login"
+    // window.location.href = import.meta.env.VITE_API_URL+"/auth/login"
+    //이거 둘중에서 풀어서 쓰기
   }
   return(
     <Main>
