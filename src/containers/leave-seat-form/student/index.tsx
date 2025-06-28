@@ -54,7 +54,13 @@ export default function StudentForm() {
             <S.Input
               type={"text"}
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                if (e.target.value === "") {
+                  setSelectStudent([]);
+                  setStudentNumbers([]);
+                }
+                setSearch(e.target.value)
+              }}
               placeholder={"이름을 입력해주세요"}
             />
             <S.StudentList>

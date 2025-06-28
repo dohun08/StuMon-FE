@@ -16,6 +16,8 @@ import ProfilePage from './pages/profile/index.tsx'
 import Supervision from './pages/supervision/index.tsx'
 import { Global, css } from '@emotion/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import Auth from "./pages/auth";
+import AppInitializer from "./components/layout/Authorization";
 
 const queryClient = new QueryClient()
 
@@ -38,6 +40,7 @@ createRoot(document.getElementById('root')!).render(
       `}
     />
     <BrowserRouter>
+      <AppInitializer/>
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/" element={<RootLayout />}>
@@ -49,6 +52,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/Leaveseat/form/student" element={<LeaveSeatFormStudent />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/supervision" element={<Supervision />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="*" element={<div>404</div>} />
         </Route>
       </Routes>
