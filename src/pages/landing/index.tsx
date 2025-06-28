@@ -2,7 +2,7 @@ import * as S from './style.ts';
 import LandingImg from "../../assets/landing.svg"
 import Logo from "../../assets/logo.svg"
 import Moniter from "../../assets/moniter.png"
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Modal from "../../components/layout/Modal/index.tsx";
 import Login from "../../containers/landing/login/index.tsx";
 
@@ -14,6 +14,9 @@ export default function Landing(){
   const setModalOpen = () => {
     setIsMsodalOpen(true);
   }
+  useEffect(() => {
+
+  }, []);
   return(
       <S.Wrap>
         {isModalOpen &&

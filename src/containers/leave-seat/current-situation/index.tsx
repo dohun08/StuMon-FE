@@ -81,7 +81,7 @@ useEffect(()=>{
       </div>
      </S.CheckBox>
       <S.LeaveList>
-       {leaveData.map((data) => {
+       {leaveData.length !== 0 ? leaveData.map((data) => {
         if( period.includes(data.period) || period.length === 0){
          if(leaveSeatInputPlace === ""){
           return(
@@ -121,7 +121,7 @@ useEffect(()=>{
         else{
          return null;
         }
-       })}
+       }) : <h4>오늘의 이석이 없습니다.</h4>}
       </S.LeaveList>
     </S.CurrentPlaceStatusContainer>
   )
