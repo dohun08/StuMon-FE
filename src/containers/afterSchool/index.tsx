@@ -8,9 +8,10 @@ interface AfterSchoolProps {
 }
 
 export default function AfterSchool({ period, teacher, name, place }: AfterSchoolProps) {
+  const realPeriod = period === "EIGHT_NIGHT" ? "8~9교시" : period === "TEN_ELEVEN" ? "10~11교시" : period;
   return (
     <S.Wrapper>
-      <S.Period>{period}</S.Period>
+      <S.Period>{realPeriod}</S.Period>
       <S.Table>
         <thead>
           <tr>
