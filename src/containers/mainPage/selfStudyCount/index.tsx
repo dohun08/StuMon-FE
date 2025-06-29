@@ -1,8 +1,13 @@
+import { useGetSelfStudyStats } from '../../../hooks/useSelfStudy';
 import * as S from './style';
 
+
 export default function SelfStudyCount() {
-  const selfStudyCount: number = 9;
-  const remainCount: number = 1;
+  const { data } = useGetSelfStudyStats();
+  const selfStudyCount: number = data?.done_count || 0;
+  const remainCount: number = data?.remaining_count || 0;
+  console.log('Self Study Stats:', data);
+
   return (
     <S.Wrapper>
       <S.Title>{((selfStudyCount - remainCount) / selfStudyCount * 100).toFixed(2)}%</S.Title>
