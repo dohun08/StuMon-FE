@@ -1,28 +1,39 @@
 import * as S from './style';
+import { useState, useEffect } from 'react';
+import useDay from '../../store/day'
+import { useGetLeaveSeat } from '../../hooks/useLeaveSeat';
 import SelfStudyCount from '../../containers/mainPage/selfStudyCount';
 import LeaveSeat from '../../containers/mainPage/current-situation-non-search';
 import TodaySupervision from '../../containers/mainPage/todaySupervision';
 import NextSelfStudy from '../../containers/mainPage/nextSelfStudy';
-import type {LeaveEntry} from "../leave-seat";
+import type { LeaveEntry } from "../leave-seat";
 
 
 export default function MainPage() {
-  const leaveData: LeaveEntry[] = [
-    { id: 1, place: "베르실6", period: "7", students: ["2209 윤도훈", "2210 이정혁"]},
-    { id: 2, place: "베르실2", period: "8~9", students: ["2209 윤도훈", "2210 이정혁"]},
-    { id: 3, place: "마이크로프로세서실", period: "10~11", students: ["2209 윤도훈", "2210 이정혁"]},
-    { id: 4, place: "마이크로프로세서실", period: "10~11", students: ["2209 윤도훈", "2210 이정혁"]},
-    { id: 5, place: "마이크로프로세서실", period: "10~11", students: ["2209 윤도훈", "2210 이정혁"]},
-    { id: 6, place: "마이크로프로세서실", period: "10~11", students: ["2209 윤도훈", "2210 이정혁"]},
-    { id: 7, place: "마이크로프로세서실", period: "10~11", students: ["2209 윤도훈", "2210 이정혁"]},
-    { id: 8, place: "마이크로프로세서실", period: "10~11", students: ["2209 윤도훈", "2210 이정혁"]},
-    { id: 9, place: "베르실1", period: "10~11", students: ["2209 윤도훈", "2210 이정혁"] },
-  ]
+  const { today } = useDay();
+
+  const { data, isLoading } = useGetLeaveSeat(today.slice(0, 10));
+  const [leaveSeat, setLeaveSeat] = useState<LeaveEntry[]>([]);
+
+  useEffect(() => {
+    if (data) {
+      const newData = data.map((item: LeaveEntry, idx: number) => {
+        if (item.period === "SEVEN") item.period = "7";
+        else if (item.period === "EIGHT_NIGHT") item.period = "8~9";
+        else if (item.period === "TEN_ELEVEN") item.period = "10~11";
+        return {
+          ...item,
+          id: idx
+        }
+      })
+      setLeaveSeat(newData);
+    }
+  }, [isLoading]);
   return (
     <S.Wrapper>
       <SelfStudyCount />
       <S.Info>
-        <LeaveSeat leaveData={leaveData} />
+        <LeaveSeat leaveData={leaveSeat} />
         <S.RightSection>
           <TodaySupervision />
           <NextSelfStudy />

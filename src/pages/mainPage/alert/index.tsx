@@ -1,13 +1,22 @@
 import styled from '@emotion/styled'
 import AlertList from '../../../containers/mainPage/AlertList/index'
+import { useDeleteAlert } from '../../../hooks/useAlert'
 
 export default function AlertPage() {
+
+  const { mutate: deleteAllAlerts } = useDeleteAlert();
+  const handleDeleteAll = () => {
+    alert('모든 알림을 삭제하시겠습니까?');
+    deleteAllAlerts();
+    window.location.reload();
+  };
+
   return (
     <Wrapper>
       <h1>알림</h1>
       <AlertSection>
         <DeleteButtonContainer>
-          <DeleteButton>모두 삭제</DeleteButton>
+          <DeleteButton onClick={handleDeleteAll}>모두 삭제</DeleteButton>
         </DeleteButtonContainer>
         <AlertList />
       </AlertSection>

@@ -6,7 +6,7 @@ export const useGetSelfStudyStats = () => {
     queryKey: ["selfStudyStats"],
     queryFn: async () => {
       const res = await API.getSelfStudyStats();
-      return res.data || [];
+      return res || [];
     }
   })
 }
@@ -16,7 +16,7 @@ export const useGetNextSelfStudy = () => {
     queryKey: ["nextSelfStudy"],
     queryFn: async () => {
       const res = await API.getNextSelfStudy();
-      return res.data || [];
+      return res || [];
     }
   })
 }

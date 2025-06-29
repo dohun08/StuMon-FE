@@ -6,7 +6,7 @@ export const useGetSupervision = (month: number) => {
     queryKey: ["supervision", month],
     queryFn: async () => {
       const res = await API.getSupervision(month);
-      return res.data || [];
+      return res || [];
     },
   });
 };
@@ -16,7 +16,7 @@ export const useGetTodaySupervision = (date: string) => {
     queryKey: ["todaySupervision", date],
     queryFn: async () => {
       const res = await API.getTodaySupervision(date);
-      return res.data || [];
+      return res || [];
     },
   });
 };

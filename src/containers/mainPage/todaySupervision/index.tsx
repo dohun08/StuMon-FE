@@ -1,10 +1,13 @@
 import * as S from './style';
+import { useGetTodaySupervision } from '../../../hooks/useSupervision';
 import StudyLamp from '../../../assets/icons/study-lamp.svg';
 import leaveSeatChange from '../../../assets/icons/leave-seat-change.svg';
 import Moon from '../../../assets/icons/moon.svg';
 
 
 export default function TodaySupervision() {
+  const { data } = useGetTodaySupervision(new Date().toISOString().slice(0, 10));
+  console.log('Today supervision data:', data);
   return (
     <S.Wrapper>
       <h2>오늘의 감독</h2>

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
+  width: 35rem;
 `;
 
 export const Period = styled.div`
@@ -10,6 +11,8 @@ export const Period = styled.div`
 `;
 
 export const Table = styled.table`
+  width: 100%;
+  table-layout: fixed;
   border-spacing: 0;
   border: 1px solid #DFE6FD;
   border-radius: 0.625rem;
