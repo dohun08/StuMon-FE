@@ -24,6 +24,7 @@ interface SupervisionItemProps {
 }
 
 export default function SupervisionItem({ weekData }: SupervisionItemProps) {
+  console.log("Rendering week at Item:", weekData);
   return (
     <S.Wrapper>
       <S.ItemSet>
@@ -38,8 +39,8 @@ export default function SupervisionItem({ weekData }: SupervisionItemProps) {
         <S.Divider />
       </S.ItemSet>
       {weekData.items.map((item, index) => (
-        <React.Fragment key={item.date}>
-          <S.DataSet isNull={item.date === ""}>
+        <React.Fragment key={index}>
+          <S.DataSet isNull={item.date == ""}>
             <S.DataSetHeader>
               <S.DataSetHeaderContent>{item.day}</S.DataSetHeaderContent>
               <S.DataSetHeaderBottom>
