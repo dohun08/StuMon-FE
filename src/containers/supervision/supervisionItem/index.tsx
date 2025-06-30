@@ -38,8 +38,8 @@ export default function SupervisionItem({ weekData }: SupervisionItemProps) {
         <S.Divider />
       </S.ItemSet>
       {weekData.items.map((item, index) => (
-        <React.Fragment key={item.date}>
-          <S.DataSet isNull={item.date === ""}>
+        <React.Fragment key={index}>
+          <S.DataSet isNull={item.date == ""}>
             <S.DataSetHeader>
               <S.DataSetHeaderContent>{item.day}</S.DataSetHeaderContent>
               <S.DataSetHeaderBottom>
@@ -52,13 +52,13 @@ export default function SupervisionItem({ weekData }: SupervisionItemProps) {
                 <div>{item.self_study_teacher["7th_teacher"] ? item.self_study_teacher["7th_teacher"].split('/')[0] : "X"}</div>
                 <div>{item.self_study_teacher["8th_teacher"] ? item.self_study_teacher["8th_teacher"].split('/')[0] : "X"}</div>
                 <div>{item.self_study_teacher["10th_teacher"] ? item.self_study_teacher["10th_teacher"].split('/')[0] : "X"}</div>
-                <div>{item.night_teacher ? item.night_teacher : "X"}</div>
+                <div>{item.night_teacher ? item.night_teacher.split('/')[0] : "X"}</div>
               </S.DataSetContentSelfStudy>
               <S.DataSetContentLeaveSeat>
                 <div>{item.leave_seat_teacher["7th_teacher"] ? item.leave_seat_teacher["7th_teacher"].split('/')[0] : "X"}</div>
                 <div>{item.leave_seat_teacher["8th_teacher"] ? item.leave_seat_teacher["8th_teacher"].split('/')[0] : "X"}</div>
                 <div>{item.leave_seat_teacher["10th_teacher"] ? item.leave_seat_teacher["10th_teacher"].split('/')[0] : "X"}</div>
-                <div>{item.night_teacher ? item.night_teacher : "X"}</div>
+                <div>{item.night_teacher ? item.night_teacher.split('/')[0] : "X"}</div>
               </S.DataSetContentLeaveSeat>
             </S.DataSetContent>
           </S.DataSet>
