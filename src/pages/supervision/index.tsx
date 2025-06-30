@@ -64,7 +64,6 @@ export default function Supervision() {
   if (isLoading) return <div>로딩중...</div>;
 
   const weeklyData = groupByWeek(supervisionData);
-  console.log('Weekly Data:', weeklyData);
 
   return (
     <S.Wrapper>

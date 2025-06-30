@@ -24,7 +24,6 @@ interface SupervisionItemProps {
 }
 
 export default function SupervisionItem({ weekData }: SupervisionItemProps) {
-  console.log("Rendering week at Item:", weekData);
   return (
     <S.Wrapper>
       <S.ItemSet>
