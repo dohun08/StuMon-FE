@@ -52,13 +52,13 @@ export default function SupervisionItem({ weekData }: SupervisionItemProps) {
                 <div>{item.self_study_teacher["7th_teacher"] ? item.self_study_teacher["7th_teacher"].split('/')[0] : "X"}</div>
                 <div>{item.self_study_teacher["8th_teacher"] ? item.self_study_teacher["8th_teacher"].split('/')[0] : "X"}</div>
                 <div>{item.self_study_teacher["10th_teacher"] ? item.self_study_teacher["10th_teacher"].split('/')[0] : "X"}</div>
-                <div>{item.night_teacher ? item.night_teacher : "X"}</div>
+                <div>{item.night_teacher ? item.night_teacher.split('/')[0] : "X"}</div>
               </S.DataSetContentSelfStudy>
               <S.DataSetContentLeaveSeat>
                 <div>{item.leave_seat_teacher["7th_teacher"] ? item.leave_seat_teacher["7th_teacher"].split('/')[0] : "X"}</div>
                 <div>{item.leave_seat_teacher["8th_teacher"] ? item.leave_seat_teacher["8th_teacher"].split('/')[0] : "X"}</div>
                 <div>{item.leave_seat_teacher["10th_teacher"] ? item.leave_seat_teacher["10th_teacher"].split('/')[0] : "X"}</div>
-                <div>{item.night_teacher ? item.night_teacher : "X"}</div>
+                <div>{item.night_teacher ? item.night_teacher.split('/')[0] : "X"}</div>
               </S.DataSetContentLeaveSeat>
             </S.DataSetContent>
           </S.DataSet>
