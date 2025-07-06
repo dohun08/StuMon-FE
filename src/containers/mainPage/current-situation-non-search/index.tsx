@@ -32,29 +32,34 @@ export default function CurrentSituationNonSearch({ leaveData , isLoading}: { le
         </S.ApplicationBtn>
       </S.TitleBox>
       <S.LeaveList>
-        { isLoading ? <Loading /> : leaveData.map((data) => {
-          if (period.includes(data.period) || period.length === 0) {
-            return (
-              <S.Leave key={data.id}>
-                <S.LeaveInfo>
-	                <S.StyledStatus status={data.status}>{data.status==="PENDING" ? "대기중" : "완료"}</S.StyledStatus>
-	                <p>{data.place}</p>
-                  <p>({data.period}교시)</p>
-                </S.LeaveInfo>
-                <S.LeaveStudentList>
-                  {data.students.map((student, index) => {
-                    return (
-                      <p key={index}>{student}</p>
-                    )
-                  })}
-                </S.LeaveStudentList>
-              </S.Leave>
-            )
-          }
-          else {
-            return null;
-          }
-        })}
+	      {isLoading ? (
+		      <Loading />
+	      ) : leaveData.length === 0 ? (
+		      <h4>오늘의 이석이 없습니다.</h4>
+	      ) : (
+		      leaveData.map((data) => {
+			      if (period.includes(data.period) || period.length === 0) {
+				      return (
+					      <S.Leave key={data.id}>
+						      <S.LeaveInfo>
+							      <S.StyledStatus status={data.status}>
+								      {data.status === "PENDING" ? "대기중" : "완료"}
+							      </S.StyledStatus>
+							      <p>{data.place}</p>
+							      <p>({data.period}교시)</p>
+						      </S.LeaveInfo>
+						      <S.LeaveStudentList>
+							      {data.students.map((student, index) => (
+								      <p key={index}>{student}</p>
+							      ))}
+						      </S.LeaveStudentList>
+					      </S.Leave>
+				      );
+			      } else {
+				      return null;
+			      }
+		      })
+	      )}
       </S.LeaveList>
     </S.CurrentPlaceStatusContainer>
   )
