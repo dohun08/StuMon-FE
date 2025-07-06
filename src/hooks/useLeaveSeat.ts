@@ -3,22 +3,31 @@ import * as API from "../service/leave-seat.ts";
 import {useMutation, useQuery} from "@tanstack/react-query";
 import {useNavigate} from "react-router-dom";
 import { useQueryClient } from '@tanstack/react-query';
-
+import {complete_leave_seat} from "../service/leave-seat.ts";
 
 export const useCreateLeaveSeat = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (data: LeaveForm) => {
-      const res = await API.create_leave_seat_form(data);
+	  mutationFn: async (data: LeaveForm & { place_id: number }) => {
+		  const res = await API.create_leave_seat_form(data);
       return res;
     },
-    onSuccess: (_, variables) => {
-      queryClient.invalidateQueries({
-        queryKey: ['leave_seat', variables.date],
-      });
-      navigate("/main");
-    },
+	  onSuccess: (_, variables) => {
+		  setTimeout(async () => {
+			  try {
+				  await complete_leave_seat(variables);
+				  console.log("✅ complete_leave_seat 성공");
+			  } catch (error) {
+				  console.error("❌ complete_leave_seat 실패", error);
+			  }
+		  }, 5000);
+			
+		  queryClient.invalidateQueries({
+			  queryKey: ["leave_seat", variables.date],
+		  });
+		  navigate("/main");
+	  },
     onError: () => {
       alert("실패");
     }
