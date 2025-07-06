@@ -3,6 +3,7 @@ import AfterSchool from '../../containers/afterSchool';
 import { useState, useMemo } from 'react';
 import useAuth from '../../store/auth';
 import { useGetStudent } from '../../hooks/useAuth';
+import Loading from '../../components/ui/loading';
 
 const DAY_KEY_MAP: Record<string, 'MON' | 'TUE' | 'WED' | 'THU'> = {
   월: 'MON',
@@ -16,13 +17,17 @@ export default function ProfilePage() {
   const days: ('월' | '화' | '수' | '목')[] = ['월', '화', '수', '목'];
 
   const { userName, profile } = useAuth();
-  const { data } = useGetStudent();
+  const { data, isLoading } = useGetStudent();
 
   const todaySchedule = useMemo(() => {
     if (!data?.after_school) return {};
     const key = DAY_KEY_MAP[selectedDay];
     return data.after_school[key] || {};
   }, [data, selectedDay]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <S.Container>
