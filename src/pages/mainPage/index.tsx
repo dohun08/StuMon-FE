@@ -33,7 +33,7 @@ export default function MainPage() {
     <S.Wrapper>
       <SelfStudyCount />
       <S.Info>
-        <LeaveSeat leaveData={leaveSeat} />
+        <LeaveSeat leaveData={leaveSeat} isLoading={isLoading} />
         <S.RightSection>
           <TodaySupervision />
           <NextSelfStudy />
