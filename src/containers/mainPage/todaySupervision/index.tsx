@@ -6,7 +6,16 @@ import Moon from '../../../assets/icons/moon.svg';
 
 
 export default function TodaySupervision() {
-  const { data, isLoading } = useGetTodaySupervision(new Date().toISOString().slice(0, 10));
+  const getTodayLocal = () => {
+    const today = new Date();
+    const YYYY = today.getFullYear();
+    const MM = String(today.getMonth() + 1).padStart(2, '0');
+    const DD = String(today.getDate()).padStart(2, '0');
+    return `${YYYY}-${MM}-${DD}`;
+  };
+
+  const today = getTodayLocal();
+  const { data, isLoading } = useGetTodaySupervision(today);
   if (isLoading) {
     return <S.Wrapper>로딩 중...</S.Wrapper>;
   }
