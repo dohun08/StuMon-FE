@@ -47,27 +47,65 @@ export const DateBox = styled.div`
 export const DateTitle = styled.p`
  font-size: 1.2rem;
 `
-export const TimeBtn = styled.button<{ $status: boolean, $unPlace : boolean }>`
-    max-width: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: ${(props) => props.$status ? "white" : "#2E6FF2"};
-    color: ${(props) => props.$status ? "#2E6FF2" : "white"};
-    padding: 6px 25px;
-    border-radius: 40px;
-    border: 2px solid #2E6FF2;
-    cursor: ${props => props.$unPlace ? "not-allowed" : "pointer"};
-    transition: 0.1s;
-    font-weight: 600;
-    &:hover {
-        background: ${(props)=>props.$status ?"white" : "#2a65dd"};
-        color: ${(props)=>props.$status ? "#2E6FF2" : "white"};
-    }
-    @media (max-width: 400px) {
-        width: 30px;
-        padding: 0;
-    }
+export const TimeBtn = styled.button<{ $status: boolean; $unPlace: boolean }>`
+  max-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* background */
+  background: ${(props) =>
+    props.$unPlace
+      ? "#ddd"
+      : props.$status
+        ? "white"
+        : "#2E6FF2"};
+
+  /* color */
+  color: ${(props) =>
+    props.$unPlace
+      ? "#888"
+      : props.$status
+        ? "#2E6FF2"
+        : "white"};
+
+  padding: 6px 25px;
+  border-radius: 40px;
+
+  /* border */
+  border: 2px solid
+  ${(props) =>
+    props.$unPlace
+      ? "#ccc"
+      : "#2E6FF2"};
+
+  cursor: ${(props) =>
+    props.$unPlace
+      ? "not-allowed"
+      : "pointer"};
+
+  transition: 0.1s;
+  font-weight: 600;
+
+  &:hover {
+    background: ${(props) =>
+      props.$unPlace
+        ? "#ddd"
+        : props.$status
+          ? "white"
+          : "#2a65dd"};
+    color: ${(props) =>
+      props.$unPlace
+        ? "#888"
+        : props.$status
+          ? "#2E6FF2"
+          : "white"};
+  }
+
+  @media (max-width: 400px) {
+    width: 30px;
+    padding: 0;
+  }
 `;
 export const TimeBox = styled.div`
     display: flex;
