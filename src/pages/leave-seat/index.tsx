@@ -11,6 +11,7 @@ export interface LeaveEntry {
   period: string
   students: string[];
   id?:number
+	status:string
 };
 export interface LeaveForm {
   place_name: string;
