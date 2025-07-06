@@ -36,7 +36,8 @@ export default function CurrentSituationNonSearch({ leaveData }: { leaveData: Le
             return (
               <S.Leave key={data.id}>
                 <S.LeaveInfo>
-                  <p>{data.place}</p>
+	                <S.StyledStatus status={data.status}>{data.status==="PENDING" ? "대기중" : "완료"}</S.StyledStatus>
+	                <p>{data.place}</p>
                   <p>({data.period}교시)</p>
                 </S.LeaveInfo>
                 <S.LeaveStudentList>

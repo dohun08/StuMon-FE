@@ -73,16 +73,28 @@ export const Leave = styled.div`
     border-radius: 0.65rem;
 `
 export const LeaveInfo = styled.div`
-    & > p:nth-child(1){
+    & > p:nth-child(2){
         color: black;
         font-size: 1.25rem;
         font-weight: bold;
     }   
- & > p:nth-child(2){
+ & > p:nth-child(3){
      color: #8c8c8c;
      font-size: 0.75rem;
  }
 `
+export const StyledStatus = styled.div<{ status: string }>`
+  display: inline-block;
+  padding: 2px 5px;
+  border-radius: 8px;
+  font-size: 0.6rem;
+  font-weight: 500;
+  color: ${({ status }) => (status === "PENDING" ? "#b4690e" : "#155724")};
+  background-color: ${({ status }) =>
+	status === "PENDING" ? "#fff3cd" : "#d4edda"};
+  border: 1px solid
+    ${({ status }) => (status === "PENDING" ? "#ffeeba" : "#c3e6cb")};
+`;
 export const LeaveStudentList = styled.div`
     display: flex;
     width: 100%;
