@@ -31,13 +31,13 @@ export default function CurrentSituationNonSearch({ leaveData }: { leaveData: Le
         </S.ApplicationBtn>
       </S.TitleBox>
       <S.LeaveList>
-        {leaveData.map((data) => {
+        {leaveData.length !== 0 ? leaveData.map((data) => {
           if (period.includes(data.period) || period.length === 0) {
             return (
               <S.Leave key={data.id}>
                 <S.LeaveInfo>
-	                <S.StyledStatus status={data.status}>{data.status==="PENDING" ? "대기중" : "완료"}</S.StyledStatus>
-	                <p>{data.place}</p>
+                  <S.StyledStatus status={data.status}>{data.status === "PENDING" ? "대기중" : "완료"}</S.StyledStatus>
+                  <p>{data.place}</p>
                   <p>({data.period}교시)</p>
                 </S.LeaveInfo>
                 <S.LeaveStudentList>
@@ -53,7 +53,7 @@ export default function CurrentSituationNonSearch({ leaveData }: { leaveData: Le
           else {
             return null;
           }
-        })}
+        }) : <h4>오늘의 이석이 없습니다.</h4>}
       </S.LeaveList>
     </S.CurrentPlaceStatusContainer>
   )
