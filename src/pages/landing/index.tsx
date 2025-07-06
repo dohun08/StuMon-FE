@@ -5,6 +5,7 @@ import Moniter from "../../assets/moniter.png"
 import {useEffect, useState} from "react";
 import Modal from "../../components/layout/Modal/index.tsx";
 import Login from "../../containers/landing/login/index.tsx";
+import {useNavigate} from "react-router-dom";
 
 export default function Landing(){
   const [isModalOpen, setIsMsodalOpen] = useState(false);
@@ -14,9 +15,29 @@ export default function Landing(){
   const setModalOpen = () => {
     setIsMsodalOpen(true);
   }
-  useEffect(() => {
-
-  }, []);
+	const navigate = useNavigate();
+	
+	useEffect(() => {
+		const token = localStorage.getItem("AT");
+		if (token) {
+			try {
+				const [, payloadBase64] = token.split('.');
+				const payload = JSON.parse(atob(payloadBase64));
+				const now = Math.floor(Date.now() / 1000);
+				
+				if (payload.exp && payload.exp > now) {
+					// 유효한 토큰
+					navigate('/main');
+				} else {
+					// 만료된 토큰
+					localStorage.removeItem("AT");
+				}
+			} catch (e) {
+				console.error("⚠️ 토큰 파싱 실패", e);
+				localStorage.removeItem("AT");
+			}
+		}
+	}, [navigate]);
   return(
       <S.Wrap>
         {isModalOpen &&
