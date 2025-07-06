@@ -12,10 +12,6 @@ export default function Auth() {
 		if (token) {
 			// localStorage에 저장
 			localStorage.setItem("AT", token);
-			
-			// 쿠키에 저장 (1시간 유효)
-			document.cookie = `access_token=${token}; path=/; max-age=3600; SameSite=None; Secure`;
-			
 			navigate("/main");
 		} else {
 			alert("로그인에 실패했습니다.");
