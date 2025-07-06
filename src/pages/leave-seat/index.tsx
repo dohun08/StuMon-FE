@@ -55,7 +55,7 @@ export default function LeaveSeat() {
       <LeaveSeatContainer>
         {isLoading && <Loading />}
        <LeaveSeatWrapper>
-        <CurrentSituation leaveData={leaveSeat} />
+        <CurrentSituation leaveData={leaveSeat} isLoading={isLoading}/>
         <CurrentPlaceStatus leaveData={leaveSeat} />
        </LeaveSeatWrapper>
       </LeaveSeatContainer>

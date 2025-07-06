@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import Exchange from '../../../assets/icons/exchange.svg';
 import { useNavigate } from "react-router-dom";
 import type { LeaveEntry } from "../../../pages/leave-seat";
+import Loading from "../../../components/ui/loading";
 
-export default function CurrentSituationNonSearch({ leaveData }: { leaveData: LeaveEntry[] }) {
+export default function CurrentSituationNonSearch({ leaveData , isLoading}: { leaveData: LeaveEntry[] , isLoading : boolean}) {
   const [isPeriod, _setIsPeriod] = useState([false, false, false]);
   const [period, setPeriod] = useState<string[]>([]);
   useEffect(() => {
@@ -31,7 +32,7 @@ export default function CurrentSituationNonSearch({ leaveData }: { leaveData: Le
         </S.ApplicationBtn>
       </S.TitleBox>
       <S.LeaveList>
-        {leaveData.map((data) => {
+        { isLoading ? <Loading /> : leaveData.map((data) => {
           if (period.includes(data.period) || period.length === 0) {
             return (
               <S.Leave key={data.id}>
