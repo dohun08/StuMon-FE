@@ -22,3 +22,23 @@ export const get_leave_seat = async (date : string)=>{
     console.error(error);
   }
 }
+
+export const get_place_id = async (place : string)=>{
+	try{
+		const res = await axiosInstance('/leaveseat/place/' + place);
+		return res.data;
+	}catch (error) {
+		console.error(error);
+	}
+}
+
+export const complete_leave_seat = async (data : LeaveForm & {place_id : number})=>{
+	console.log(data)
+	try{
+		const res = await axiosInstance.post('/leaveseat/complete', data);
+		console.log(res.data)
+		return res.data;
+	}catch (error) {
+		console.error(error);
+	}
+}

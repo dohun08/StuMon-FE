@@ -7,6 +7,7 @@ import {searchStudent} from "../../../service/auth.ts";
 import useDebounce from "../../../hooks/useDebounce.ts";
 import {useCreateLeaveSeat} from "../../../hooks/useLeaveSeat.ts";
 import type {Student} from "../../../pages/leave-seat/form/student";
+import {get_place_id} from "../../../service/leave-seat.ts";
 
 export default function StudentForm() {
   const navigate = useNavigate();
@@ -27,11 +28,23 @@ export default function StudentForm() {
   useEffect(() => {
     if (search) debouncedSearch();
   }, [search]);
+	const [placeId, setPlaceId] = useState(0);
 
   const {mutate} = useCreateLeaveSeat();
+	const getPlaceId = async () => {
+		try {
+			const res = await get_place_id(place)
+			setPlaceId(res);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+	useEffect(() => {
+		getPlaceId();
+	}, []);
 
   const handleSelect = () => {
-    mutate({date : day, place_name: place, period :time, cause, students: selectStudent});
+    mutate({date : day, place_name: place, period :time, cause, students: selectStudent, place_id: placeId});
   };
   return (
     <S.TimeContainer>
