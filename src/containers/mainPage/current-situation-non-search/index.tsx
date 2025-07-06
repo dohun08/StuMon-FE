@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import Exchange from '../../../assets/icons/exchange.svg';
 import { useNavigate } from "react-router-dom";
 import type { LeaveEntry } from "../../../pages/leave-seat";
+import Loading from "../../../components/ui/loading";
 
-export default function CurrentSituationNonSearch({ leaveData }: { leaveData: LeaveEntry[] }) {
+export default function CurrentSituationNonSearch({ leaveData , isLoading}: { leaveData: LeaveEntry[] , isLoading : boolean}) {
   const [isPeriod, _setIsPeriod] = useState([false, false, false]);
   const [period, setPeriod] = useState<string[]>([]);
   useEffect(() => {
@@ -31,29 +32,34 @@ export default function CurrentSituationNonSearch({ leaveData }: { leaveData: Le
         </S.ApplicationBtn>
       </S.TitleBox>
       <S.LeaveList>
-        {leaveData.length !== 0 ? leaveData.map((data) => {
-          if (period.includes(data.period) || period.length === 0) {
-            return (
-              <S.Leave key={data.id}>
-                <S.LeaveInfo>
-                  <S.StyledStatus status={data.status}>{data.status === "PENDING" ? "대기중" : "완료"}</S.StyledStatus>
-                  <p>{data.place}</p>
-                  <p>({data.period}교시)</p>
-                </S.LeaveInfo>
-                <S.LeaveStudentList>
-                  {data.students.map((student, index) => {
-                    return (
-                      <p key={index}>{student}</p>
-                    )
-                  })}
-                </S.LeaveStudentList>
-              </S.Leave>
-            )
-          }
-          else {
-            return null;
-          }
-        }) : <h4>오늘의 이석이 없습니다.</h4>}
+	      {isLoading ? (
+		      <Loading />
+	      ) : leaveData.length === 0 ? (
+		      <h4>오늘의 이석이 없습니다.</h4>
+	      ) : (
+		      leaveData.map((data) => {
+			      if (period.includes(data.period) || period.length === 0) {
+				      return (
+					      <S.Leave key={data.id}>
+						      <S.LeaveInfo>
+							      <S.StyledStatus status={data.status}>
+								      {data.status === "PENDING" ? "대기중" : "완료"}
+							      </S.StyledStatus>
+							      <p>{data.place}</p>
+							      <p>({data.period}교시)</p>
+						      </S.LeaveInfo>
+						      <S.LeaveStudentList>
+							      {data.students.map((student, index) => (
+								      <p key={index}>{student}</p>
+							      ))}
+						      </S.LeaveStudentList>
+					      </S.Leave>
+				      );
+			      } else {
+				      return null;
+			      }
+		      })
+	      )}
       </S.LeaveList>
     </S.CurrentPlaceStatusContainer>
   )
