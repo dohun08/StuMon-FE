@@ -5,11 +5,10 @@ import useAuth from "../../store/auth";
 
 export default function Auth() {
   const navigate = useNavigate();
-
+  const { initializeFromToken } = useAuth();
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const token = searchParams.get("token");
-    const { initializeFromToken } = useAuth();
 
     if (token) {
       // localStorage에 저장
@@ -20,7 +19,7 @@ export default function Auth() {
       alert("로그인에 실패했습니다.");
       navigate("/");
     }
-  }, [navigate]);
+  }, [initializeFromToken, navigate]);
 
   return (
     <div>
