@@ -84,6 +84,7 @@ export default function Time() {
               $unPlace={unPlaceData[1]}
             >8~9교시</S.TimeBtn>
             <S.TimeBtn
+	            
               onClick={()=> {
                 if(unPlaceData[2]){
                   alert("10~11교시는 오늘 이석이 되어있습니다.")
