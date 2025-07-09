@@ -39,6 +39,8 @@ export const useCreateLeaveSeat = () => {
 export const useGetLeaveSeat = (date : string) => {
   return useQuery({
     queryKey: ['leave_seat', date],
+	  staleTime: 0,
+	  refetchOnMount: true,
     queryFn: async () => {
       const res = await API.get_leave_seat(date);
       return res.data;
