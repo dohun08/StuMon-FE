@@ -15,7 +15,7 @@ export const useCreateLeaveSeat = () => {
 		  const res = await API.create_leave_seat_form(data);
       return res;
     },
-	  onSuccess: (_, variables) => {
+	  onSuccess: async (_, variables) => {
 		  setTimeout(async () => {
 			  try {
 				  await complete_leave_seat(variables);
@@ -24,11 +24,10 @@ export const useCreateLeaveSeat = () => {
 				  console.error("❌ complete_leave_seat 실패", error);
 			  }
 		  }, 5000);
-			
 		  queryClient.invalidateQueries({
 			  queryKey: ["leave_seat", today.slice(0, 10)],
 		  });
-			queryClient.refetchQueries({
+			await queryClient.refetchQueries({
 				queryKey: ["leave_seat", today.slice(0, 10)],
 			});
 		  navigate("/leaveSeat");
