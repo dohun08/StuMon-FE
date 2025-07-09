@@ -28,6 +28,9 @@ export const useCreateLeaveSeat = () => {
 		  queryClient.invalidateQueries({
 			  queryKey: ["leave_seat", today.slice(0, 10)],
 		  });
+			queryClient.refetchQueries({
+				queryKey: ["leave_seat", today.slice(0, 10)],
+			});
 		  navigate("/leaveSeat");
 	  },
     onError: () => {
