@@ -28,7 +28,7 @@ export const useCreateLeaveSeat = () => {
 		  queryClient.invalidateQueries({
 			  queryKey: ["leave_seat", today.slice(0, 10)],
 		  });
-		  navigate("/main");
+		  navigate("/leaveSeat");
 	  },
     onError: () => {
       alert("실패");
