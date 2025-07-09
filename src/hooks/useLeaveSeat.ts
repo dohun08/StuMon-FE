@@ -4,10 +4,12 @@ import {useMutation, useQuery} from "@tanstack/react-query";
 import {useNavigate} from "react-router-dom";
 import { useQueryClient } from '@tanstack/react-query';
 import {complete_leave_seat} from "../service/leave-seat.ts";
+import useDay from "../store/day.ts";
 
 export const useCreateLeaveSeat = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+	const {today} = useDay();
   return useMutation({
 	  mutationFn: async (data: LeaveForm & { place_id: number }) => {
 		  const res = await API.create_leave_seat_form(data);
@@ -24,7 +26,7 @@ export const useCreateLeaveSeat = () => {
 		  }, 5000);
 			
 		  queryClient.invalidateQueries({
-			  queryKey: ["leave_seat", variables.date],
+			  queryKey: ["leave_seat", today.slice(0, 10)],
 		  });
 		  navigate("/main");
 	  },
